@@ -1,53 +1,162 @@
 const express = require('express');
-const tf = require('@tensorflow/tfjs-node');
-const use = require('@tensorflow-models/universal-sentence-encoder');
-const redis = require('redis');
+const fs = require('fs').promises;
+const path = require('path');
+const stringSimilarity = require('string-similarity');
 
 const app = express();
 app.use(express.json());
 
-// Initialize components
-let model;
-let redisClient;
+// Configuration
+const MAX_QUESTIONS = 5;
+const SIMILARITY_THRESHOLD = 0.85;
 
+// JSON file path
+const QUESTIONS_FILE = path.join(__dirname, 'questions.json');
+
+// Initialize JSON file
 async function initialize() {
-  console.log("Loading TensorFlow model...");
-  model = await use.load();
-  
-  console.log("Connecting to Redis...");
-  redisClient = redis.createClient();
-  await redisClient.connect();
-  
-  console.log("System ready!");
+    try {
+        // Check if questions.json exists; if not, create it
+        try {
+            await fs.access(QUESTIONS_FILE);
+        } catch {
+            await fs.writeFile(QUESTIONS_FILE, JSON.stringify({ questions: [] }));
+        }
+        console.log("System ready!");
+    } catch (err) {
+        console.error("Initialization failed:", err);
+        process.exit(1);
+    }
 }
 
-initialize();
+// Read questions from JSON file
+async function getStoredQuestions() {
+    try {
+        const data = await fs.readFile(QUESTIONS_FILE, 'utf8');
+        return JSON.parse(data).questions || [];
+    } catch (err) {
+        console.error('Error reading questions file:', err);
+        return [];
+    }
+}
 
+// Write questions to JSON file
+async function saveQuestions(questions) {
+    try {
+        await fs.writeFile(QUESTIONS_FILE, JSON.stringify({ questions }, null, 2));
+    } catch (err) {
+        console.error('Error writing questions file:', err);
+    }
+}
 
-async function compareQuestions(question1, question2) {
-    // Generate embeddings (numerical representations)
-    const embeddings = await model.embed([question1, question2]);
+// Process multiple questions
+async function processQuestions(questions) {
+    if (!Array.isArray(questions)) {
+        throw new Error('Input must be an array of questions');
+    }
     
-    // Calculate cosine similarity
-    const similarity = tf.matMul(
-      embeddings.slice([0,0], [1]), 
-      embeddings.slice([1,0], [1]).transpose()
-    ).dataSync()[0];
-    
-    return similarity;
-  }
+    if (questions.length > MAX_QUESTIONS) {
+        throw new Error(`Maximum ${MAX_QUESTIONS} questions allowed per request`);
+    }
 
-app.post('/check', async (req, res) => {
-  try {
-    const { question1, question2 } = req.body;
-    const similarity = await compareQuestions(question1, question2);
-    res.json({ similarity });
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
+    const validQuestions = questions
+        .filter(q => typeof q === 'string' && q.trim().length > 0)
+        .slice(0, MAX_QUESTIONS);
+
+    if (validQuestions.length === 0) {
+        throw new Error('No valid questions provided');
+    }
+
+    const results = [];
+    const newQuestions = [];
+
+    // Load existing questions
+    const existingQuestions = await getStoredQuestions();
+
+    for (let i = 0; i < validQuestions.length; i++) {
+        const currentQuestion = validQuestions[i];
+        let isDuplicate = false;
+        let mostSimilar = { similarity: 0, question: '' };
+
+        // Check against existing questions
+        for (const existing of existingQuestions) {
+            const similarity = stringSimilarity.compareTwoStrings(
+                currentQuestion.toLowerCase(),
+                existing.text.toLowerCase()
+            );
+            
+            if (similarity > mostSimilar.similarity) {
+                mostSimilar = { similarity, question: existing.text };
+            }
+            
+            if (similarity > SIMILARITY_THRESHOLD) {
+                isDuplicate = true;
+                break;
+            }
+        }
+
+        // Check against other new questions in this batch
+        if (!isDuplicate) {
+            for (let j = 0; j < newQuestions.length; j++) {
+                const similarity = stringSimilarity.compareTwoStrings(
+                    currentQuestion.toLowerCase(),
+                    newQuestions[j].text.toLowerCase()
+                );
+                
+                if (similarity > mostSimilar.similarity) {
+                    mostSimilar = { similarity, question: newQuestions[j].text };
+                }
+                
+                if (similarity > SIMILARITY_THRESHOLD) {
+                    isDuplicate = true;
+                    break;
+                }
+            }
+        }
+
+        results.push({
+            question: currentQuestion,
+            isDuplicate,
+            mostSimilarQuestion: mostSimilar.similarity > 0.6 ? mostSimilar.question : null,
+            similarityScore: mostSimilar.similarity
+        });
+
+        if (!isDuplicate) {
+            newQuestions.push({ 
+                id: `question:${Date.now()}-${i}`,
+                text: currentQuestion 
+            });
+        }
+    }
+
+    // Store new questions
+    if (newQuestions.length > 0) {
+        const updatedQuestions = [...existingQuestions, ...newQuestions];
+        await saveQuestions(updatedQuestions);
+    }
+
+    return results;
+}
+
+// API endpoint
+app.post('/check-batch', async (req, res) => {
+    try {
+        const { questions } = req.body;
+        const results = await processQuestions(questions);
+        res.json({ results });
+    } catch (error) {
+        console.error('Error processing questions:', error);
+        res.status(400).json({ 
+            error: error.message,
+            details: error.stack 
+        });
+    }
 });
 
-const PORT = 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+// Initialize and start server
+initialize().then(() => {
+    const PORT = process.env.PORT || 3000;
+    app.listen(PORT, () => {
+        console.log(`Server running on http://localhost:${PORT}`);
+    });
 });
