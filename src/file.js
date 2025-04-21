@@ -2,10 +2,12 @@
 const express = require("express");
 const multer = require("multer");
 const xlsx = require("xlsx");
+const cors = require("cors");
 const fs = require("fs");
 const path = require("path");
 
 const app = express();
+app.use(cors("*"));
 const port = 3000;
 
 // Use multer with memoryStorage
@@ -61,7 +63,7 @@ app.post("/upload", upload.single("file"), (req, res) => {
     }
   } catch (err) {
     console.error(err);
-    return res.status(500).send("Error processing file");
+    return res.status(500).send("Error processing file, Upload an excel file");
   }
 });
 
