@@ -2,8 +2,10 @@ const express = require("express");
 const fs = require("fs").promises;
 const path = require("path");
 const stringSimilarity = require("string-similarity");
+const cors = require("cors")
 
 const app = express();
+app.use(cors())
 app.use(express.json());
 
 // Configuration
