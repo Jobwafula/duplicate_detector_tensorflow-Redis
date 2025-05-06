@@ -1,3 +1,1169 @@
 {
-  "questions": []
+  "questions": [
+    {
+      "id": "question-5149f24c-355d-408b-9e44-bc20ad2140fb",
+      "text": "What is the capital city of France?",
+      "createdAt": "2025-05-06T09:18:10.733Z"
+    },
+    {
+      "id": "question-06e1a3ac-f6c2-4040-bffd-3baccbd28071",
+      "text": "Liam, a cloud integration architect at a logistics company, is configuring Oracle Integration Cloud to connect securely with an on-premises ERP system through a VPN. However, the connectivity fails intermittently during high data volume periods. What should he verify to ensure consistent network communication?",
+      "createdAt": "2025-05-06T09:30:50.332Z"
+    },
+    {
+      "id": "question-aea05c49-4e28-4793-96bf-bd6e754484bb",
+      "text": "Sophia, an integration lead at a healthcare network, observes that scheduled integrations sometimes miss their run time during failover events. She wants to ensure high availability and continuity of scheduled tasks. What should she configure?",
+      "createdAt": "2025-05-06T09:30:54.559Z"
+    },
+    {
+      "id": "question-a9e9664e-b976-41bb-aa55-b00cadef5a71",
+      "text": "Noah, a security engineer in a federal department, needs to set up outbound connections from Oracle Integration Cloud to partner endpoints. However, access is being denied due to external firewall restrictions. Which configuration should he adjust?",
+      "createdAt": "2025-05-06T09:31:00.213Z"
+    },
+    {
+      "id": "question-b3c65bf0-7eed-4467-8d73-c3823b3840a3",
+      "text": "Ethan, a middleware administrator at a financial institution, notices that certain integrations experience latency during peak business hours. The system logs show backlogs forming in the message queues. What is the most effective infrastructure-based action to address this?",
+      "createdAt": "2025-05-06T09:31:09.310Z"
+    },
+    {
+      "id": "question-fa9afcb4-d57d-4853-b9ec-b984af156003",
+      "text": "Ava, a DevOps consultant at a manufacturing enterprise, is deploying multiple OIC agents to support hybrid integrations. She wants to avoid single points of failure and enhance agent scalability. What deployment strategy should she adopt?",
+      "createdAt": "2025-05-06T09:31:21.044Z"
+    },
+    {
+      "id": "question-579c7e9b-82c1-4c7d-acc8-4cb41ed17a2c",
+      "text": "Mason, an operations engineer at a telecom provider, needs to proactively monitor the health of the OIC infrastructure to prevent downtime and SLA breaches. He is evaluating the built-in monitoring tools. Which option best supports his objective?",
+      "createdAt": "2025-05-06T09:31:37.375Z"
+    },
+    {
+      "id": "question-f7eebabc-7968-4a67-a5b6-7ac3034310e6",
+      "text": "Michael, a systems engineer at a retail chain, observes that Oracle OIC’s infrastructure accumulates excessive temporary data from 5,000 integration runs, risking storage overruns. Which solution best optimizes data storage management?",
+      "createdAt": "2025-05-06T09:32:10.551Z"
+    },
+    {
+      "id": "question-db06e47c-cc4f-4510-9c12-1c68db44f715",
+      "text": "Sarah, a cybersecurity lead at a healthcare provider, identifies that outdated credentials in Oracle OIC infrastructure for 2,000 integrations expose sensitive patient data. Which approach best secures credential management without disrupting flows?",
+      "createdAt": "2025-05-06T09:32:27.178Z"
+    },
+    {
+      "id": "question-06e4486b-bbdb-47d3-8e83-774f770829e4",
+      "text": "David, an IT manager at a logistics company, faces integration failures in Oracle OIC when the primary cloud region goes offline, impacting 3,000 supply chain flows. Which configuration best enables seamless failover to a secondary region?",
+      "createdAt": "2025-05-06T09:32:44.568Z"
+    },
+    {
+      "id": "question-f0d483b2-fd99-4390-baf1-d05f900d71cb",
+      "text": "Jacob, a finance analyst at an e-commerce company, detects rising costs in Oracle OIC infrastructure due to underutilized resources for 6,000 integrations. Which strategy best minimizes costs while maintaining performance?",
+      "createdAt": "2025-05-06T09:33:04.486Z"
+    },
+    {
+      "id": "question-8e0bf5a0-3a37-4ea9-bbaa-d676070a9281",
+      "text": "An OIC instance with auto-scaling enabled based on default CPU utilization metrics frequently experiences transient performance degradation during sudden spikes in inbound message volume. Analysis reveals that by the time the CPU utilization triggers a scale-up, the integration queues have already built up significantly, leading to delayed processing. What advanced OIC infrastructure configuration should be implemented to enable a more proactive scaling behavior that anticipates workload increases before CPU becomes heavily saturated?",
+      "createdAt": "2025-05-06T09:33:08.508Z"
+    },
+    {
+      "id": "question-5b85ce20-eef9-4a37-91d2-02af73538cfb",
+      "text": "A financial data analytics firm managing large volumes of OIC integration runtime data needs a tiered storage strategy to optimize costs and performance, with frequently accessed data on high-performance storage, older data archived to lower-cost storage, and automatic purging after a retention period. Which OIC capability, combined with OCI services, best enables this data storage management strategy?",
+      "createdAt": "2025-05-06T09:33:12.337Z"
+    },
+    {
+      "id": "question-593f73f2-52ed-4aa6-8620-626e4088160a",
+      "text": "A regulated healthcare organization requires secure, automated credential management for OIC integrations, with automatic rotation of passwords, API keys, and certificates, role-based access, and audit logging. Which OIC feature, combined with OCI Security services, best meets these requirements?",
+      "createdAt": "2025-05-06T09:33:30.325Z"
+    },
+    {
+      "id": "question-36f27b64-a800-4105-b5b2-0c020108fb7e",
+      "text": "Ava, a performance engineer at a high-throughput data processing company, is troubleshooting performance bottlenecks in their OIC integrations that process millions of records daily. Standard monitoring shows high CPU utilization on the OIC instances. What advanced OIC infrastructure tuning and configuration options should Ava explore to optimize the integration runtime performance for handling such massive data volumes?",
+      "createdAt": "2025-05-06T09:34:02.330Z"
+    },
+    {
+      "id": "question-1edf28d1-e468-4e6e-9dc2-4ff917d266f0",
+      "text": "A large enterprise requires a cost governance strategy for OIC infrastructure, with detailed cost tracking and allocation to projects and business units, optimization based on utilization, and automated controls to prevent overruns. Which OCI and OIC tools and practices best enable this strategy?",
+      "createdAt": "2025-05-06T09:34:02.710Z"
+    },
+    {
+      "id": "question-7fa26bb6-dbcd-4c75-895b-91d8e66f13ac",
+      "text": "A logistics company is experiencing intermittent failures in its integrations deployed on Oracle Integration Cloud. How can the organization monitor the health of its integration instances effectively?",
+      "createdAt": "2025-05-06T09:34:03.035Z"
+    },
+    {
+      "id": "question-dac3f6fc-37a1-45ed-b678-a7220ac93d23",
+      "text": "A retail company wants to track and analyze errors occurring in its integration flows to improve reliability. What is the best approach in Oracle Integration Cloud?",
+      "createdAt": "2025-05-06T09:34:03.395Z"
+    },
+    {
+      "id": "question-dd2b55cf-1381-4c32-b2f4-f30895973244",
+      "text": "A financial institution wants to monitor the performance metrics of its integrations to ensure optimal operation. Which feature in Oracle Integration Cloud can help achieve this?",
+      "createdAt": "2025-05-06T09:34:04.571Z"
+    },
+    {
+      "id": "question-d97ef59c-dfab-4b7b-8835-6b44578de6fa",
+      "text": "Emily, a systems analyst at a healthcare provider, struggles to trace compliance violations in 5,000 daily integration flows in Oracle OIC due to limited audit log granularity. Which monitoring enhancement best improves audit log analysis for compliance?",
+      "createdAt": "2025-05-06T09:34:04.776Z"
+    },
+    {
+      "id": "question-64b24d7a-4f9d-47d7-b1e5-1117713c22a1",
+      "text": "Michael, an IT manager at a logistics company, faces delays in responding to critical integration failures in Oracle OIC, impacting 3,000 supply chain flows. The team needs proactive notifications for issues. Which monitoring solution best enables real-time alerting?",
+      "createdAt": "2025-05-06T09:34:05.001Z"
+    },
+    {
+      "id": "question-382486d3-e9a0-4794-b108-2bbb56bf6470",
+      "text": "Sarah, a DevOps engineer at a retail chain, identifies that cascading failures in 4,000 Oracle OIC integration flows are hard to diagnose due to unclear dependencies. Which monitoring approach best improves dependency tracking for failure analysis?",
+      "createdAt": "2025-05-06T09:34:05.208Z"
+    },
+    {
+      "id": "question-30ead21c-5585-42cf-bf44-9e3941bad4e9",
+      "text": "David, a systems engineer at a manufacturing firm, notices that 2,500 integration flows in Oracle OIC experience intermittent slowdowns, but standard monitoring tools fail to pinpoint the root cause. Which advanced monitoring configuration best enables precise diagnosis of flow bottlenecks?",
+      "createdAt": "2025-05-06T09:34:05.377Z"
+    },
+    {
+      "id": "question-235e77ac-fe38-4942-905b-4926b5eb1a66",
+      "text": "A manufacturing company wants to create a new integration in Oracle Integration Cloud to connect its ERP system with a third-party logistics provider. What is the first step in creating an integration?",
+      "createdAt": "2025-05-06T09:34:06.583Z"
+    },
+    {
+      "id": "question-dbeda948-be05-4eeb-9d87-4afc7d58b36b",
+      "text": "A retail company needs to connect Oracle Integration Cloud to its on-premises database. How can this connection be established?",
+      "createdAt": "2025-05-06T09:34:06.784Z"
+    },
+    {
+      "id": "question-2c73fb0c-97f4-4d92-b2d2-83f025941aea",
+      "text": "A healthcare organization is building an integration to transfer patient data between two systems. How can the organization map the data fields effectively?",
+      "createdAt": "2025-05-06T09:34:07.091Z"
+    },
+    {
+      "id": "question-abc37270-ba13-4116-9874-c143716ad576",
+      "text": "A financial institution has completed the development of an integration and wants to make it operational. What is the next step to activate the integration?",
+      "createdAt": "2025-05-06T09:34:07.315Z"
+    },
+    {
+      "id": "question-42e8c1d8-521e-44d7-9ab0-cb50ace5f1ac",
+      "text": "A software company wants to integrate Oracle Integration Cloud with Salesforce. How can the company simplify this process?",
+      "createdAt": "2025-05-06T09:34:07.530Z"
+    },
+    {
+      "id": "question-6b239848-0b12-4f96-9696-6a9b4dbb15e7",
+      "text": "A logistics company wants to monitor the status of its integrations in Oracle Integration Cloud. Which feature can help achieve this?",
+      "createdAt": "2025-05-06T09:34:22.739Z"
+    },
+    {
+      "id": "question-65568a2e-a4e4-4154-8103-8a3292ca381f",
+      "text": "A national retail chain requires 99.99% uptime for their mission-critical order processing integrations. Their OIC implementation must survive availability domain failures in the US West region. Which deployment approach meets this requirement?",
+      "createdAt": "2025-05-06T09:34:23.021Z"
+    },
+    {
+      "id": "question-dd66bf73-27d1-4404-b4e3-734e5c6230c5",
+      "text": "An insurance company needs to transform complex XML healthcare claims (HL7 format) into JSON for their modern claims processing system. The transformation requires conditional logic based on 15 different claim types. Which OIC capability provides the most maintainable solution?",
+      "createdAt": "2025-05-06T09:34:23.371Z"
+    },
+    {
+      "id": "question-30309c08-a724-476c-bd5f-112af0e3fc4e",
+      "text": "A manufacturing company with on-premises SAP ERP needs to securely expose order status APIs through OIC to their cloud partners. The solution must authenticate external users while preventing direct access to SAP. Which pattern provides the most secure implementation?",
+      "createdAt": "2025-05-06T09:34:23.650Z"
+    },
+    {
+      "id": "question-b932cebc-c8be-4347-8563-7e5e395249ce",
+      "text": "An e-commerce platform experiences timeouts during peak sales when processing 50+ concurrent orders through OIC. The integration makes 3 sequential REST calls to different systems. Which optimization approach would most improve throughput?",
+      "createdAt": "2025-05-06T09:34:23.974Z"
+    },
+    {
+      "id": "question-cc02f616-8521-4301-88e8-352d1b79b820",
+      "text": "A financial institution needs to ensure their payment integrations can failover within 1 hour if the primary OIC instance fails. The solution must maintain all in-flight transactions. Which DR strategy meets these requirements?",
+      "createdAt": "2025-05-06T09:34:25.367Z"
+    },
+    {
+      "id": "question-cc47f633-17c3-48b4-b9e5-96a11813ff50",
+      "text": "A healthcare provider needs to log all PHI data transformations between their EHR and billing systems for HIPAA audits. Which OIC feature provides comprehensive tracking?",
+      "createdAt": "2025-05-06T09:34:25.655Z"
+    },
+    {
+      "id": "question-ca12b859-1d10-4011-a654-3cf17cdf07b0",
+      "text": "An airline's booking integration must automatically retry failed hotel API calls with exponential backoff, then route to alternative providers after 3 failures. Which OIC feature enables this workflow?",
+      "createdAt": "2025-05-06T09:34:26.047Z"
+    },
+    {
+      "id": "question-ab90a515-ef2e-4d36-ad8b-61aca1a4b53f",
+      "text": "A logistics company needs to track whether 95% of shipment status updates complete within 10 seconds. Which OIC capability provides this insight?",
+      "createdAt": "2025-05-06T09:34:26.349Z"
+    },
+    {
+      "id": "question-f8971b14-0704-4382-9fb2-eb0659f75497",
+      "text": "Ryan, an integration administrator at a retail chain, needs to track failures of a specific scheduled integration that processes supplier invoices nightly. He wants to avoid scanning logs manually every morning. What should he configure to get automatic updates about such failures?",
+      "createdAt": "2025-05-06T09:34:26.618Z"
+    },
+    {
+      "id": "question-447799e0-4c88-4317-85ac-20d9917b25d2",
+      "text": "Amelia, working in a financial firm, has been tasked with auditing an integration that failed during payload transformation. She needs to examine the input and output for multiple steps to verify the issue. Where should she find the relevant details?",
+      "createdAt": "2025-05-06T09:34:27.884Z"
+    },
+    {
+      "id": "question-ad8852aa-590f-426d-ad2d-402de05873ba",
+      "text": "Logan, an operations analyst in a telecom provider, is asked to provide non-technical executives with a real-time dashboard showing the success/failure status of core integrations. Which approach is most appropriate?",
+      "createdAt": "2025-05-06T09:34:28.194Z"
+    },
+    {
+      "id": "question-44ffd714-7629-44da-a830-2cd781b1215a",
+      "text": "When setting up a new integration environment that requires guaranteed resource isolation, which OIC instance type should be selected?",
+      "createdAt": "2025-05-06T09:34:28.552Z"
+    },
+    {
+      "id": "question-fbb2d5ff-37de-48b5-954b-57dcd0020c15",
+      "text": "Which method allows an integration to be initiated automatically when a file arrives in a specified Oracle Object Storage bucket?",
+      "createdAt": "2025-05-06T09:35:15.025Z"
+    },
+    {
+      "id": "question-6a006fa9-586c-4828-a39f-00ac161f0f6c",
+      "text": "When mapping data between systems with different field formats, which OIC component provides visual field-to-field mapping?",
+      "createdAt": "2025-05-06T09:35:15.343Z"
+    },
+    {
+      "id": "question-fd28aadb-2f5b-4101-8a3d-ff4f4962254f",
+      "text": "While developing an integration for a retail application, Emma, a Solutions Architect at an IT services provider, needs to ensure that her integration is versioned correctly throughout its lifecycle. What should she consider when managing integration versions?",
+      "createdAt": "2025-05-06T09:35:16.820Z"
+    },
+    {
+      "id": "question-c7310f49-7df3-4adc-b369-280b045d1a63",
+      "text": "John, a Cloud Engineer at a finance company, is setting up a new development environment in Oracle Integration Cloud. What primary consideration should he prioritize during this setup?",
+      "createdAt": "2025-05-06T09:35:17.362Z"
+    },
+    {
+      "id": "question-bbc5dda5-e956-4e8c-8997-1b7f8bb531fb",
+      "text": "Sarah, a Product Manager in an e-commerce firm, is tasked with designing APIs for her team’s integration needs. What aspect of API design should she emphasize for maximizing usability?",
+      "createdAt": "2025-05-06T09:35:17.758Z"
+    },
+    {
+      "id": "question-3a05bf28-fe34-4035-83ea-ebadf5848cbc",
+      "text": "Michael, an Integration Specialist in a healthcare organization, is developing a workflow that involves multiple applications. What approach should he take to effectively orchestrate data across these systems?",
+      "createdAt": "2025-05-06T09:35:18.119Z"
+    },
+    {
+      "id": "question-4f87323d-2e4d-49c3-af34-4ae7cec7f7ef",
+      "text": "Lisa, a Security Analyst in a manufacturing company, is reviewing security measures for the integrations in OIC. Which practice should she implement to enhance integration security?",
+      "createdAt": "2025-05-06T09:35:18.484Z"
+    },
+    {
+      "id": "question-2b5cd14e-2b1c-4805-9eeb-fc4305cbca78",
+      "text": "David, a Senior Developer at a government agency, is faced with frequent integration failures. What strategy should he adopt to minimize error occurrences in his integrations?",
+      "createdAt": "2025-05-06T09:35:19.863Z"
+    },
+    {
+      "id": "question-42078b54-f631-4dc2-8304-4b7b5cbe1f6e",
+      "text": "Monique, an Operations Manager in a supply chain company, needs to monitor the performance of her integrations in real-time. Which tool within OIC should she utilize?",
+      "createdAt": "2025-05-06T09:35:20.238Z"
+    },
+    {
+      "id": "question-710bdf05-e475-487c-9016-f234bb8fcbe5",
+      "text": "Alex, a Project Coordinator in an R&D research center, is implementing changes to existing integrations. What best practice should he use to ensure successful change management?",
+      "createdAt": "2025-05-06T09:35:20.644Z"
+    },
+    {
+      "id": "question-bdb0c56b-bd87-4f41-bd4f-73d04eeffb93",
+      "text": "Karen, a Change Manager in a retail company, is launching a new integration platform. How can she facilitate user adoption effectively?",
+      "createdAt": "2025-05-06T09:35:21.030Z"
+    },
+    {
+      "id": "question-09faab91-1988-4673-a955-79bfb91e0161",
+      "text": "Nathan, an Integration Consultant at a software firm, is responsible for documenting the integrations his team develops in OIC. What key element should he prioritize in his documentation?",
+      "createdAt": "2025-05-06T09:35:21.547Z"
+    },
+    {
+      "id": "question-a91bdc11-292e-4a98-9bce-1d3210a87926",
+      "text": "Carol, a Cloud Operations Engineer at a financial services company, is tasked with managing user access to Oracle Integration Cloud. Which role should she assign to allow users to create and manage integrations without granting full administrative privileges?",
+      "createdAt": "2025-05-06T09:35:23.168Z"
+    },
+    {
+      "id": "question-02499ed9-b12d-48df-83bd-48b3da2a5975",
+      "text": "John, an IT Manager at a healthcare organization, is planning to deploy multiple integrations on Oracle Integration Cloud but is concerned about service limits. What is a critical limitation he needs to consider when planning his integration architecture?",
+      "createdAt": "2025-05-06T09:35:27.039Z"
+    },
+    {
+      "id": "question-179f358b-4b52-42de-a346-a28561a54072",
+      "text": "Lisa, an Integration Specialist at an e-commerce company, needs to connect an external system to Oracle Integration Cloud. What is the first step she should take to set up this connection?",
+      "createdAt": "2025-05-06T09:35:27.457Z"
+    },
+    {
+      "id": "question-df607800-4cd0-4b9e-a6b4-d0bff1654a26",
+      "text": "Chloe, part of an IT services firm, is troubleshooting callback response delays in asynchronous integrations. These issues occur inconsistently and are hard to replicate in test environments. What monitoring setup will help her isolate the problem?",
+      "createdAt": "2025-05-06T09:35:27.909Z"
+    },
+    {
+      "id": "question-ebb6eefe-ae9f-405e-9181-556a2845ccf9",
+      "text": "Henry, a middleware architect at a transportation firm, needs to monitor OIC agents deployed on-premises for hybrid integrations. The agents must send consistent heartbeat signals to avoid sudden disconnections. What should he implement?",
+      "createdAt": "2025-05-06T09:35:28.549Z"
+    },
+    {
+      "id": "question-9dc05ac9-e993-4270-9a6a-dcee5f13062b",
+      "text": "Natalie, from a healthcare provider's integration team, is asked to identify integrations violating their SLA of under 30 seconds processing time. She wants a proactive way to detect and act on this. What feature should she use?",
+      "createdAt": "2025-05-06T09:35:29.973Z"
+    },
+    {
+      "id": "question-43f816cc-fd2a-4def-9ebe-3effcfb41694",
+      "text": "Tom, a Systems Analyst at a technology firm, is designing integrations for multiple cloud services within OIC. What approach should he consider to ensure efficient data handling between services?",
+      "createdAt": "2025-05-06T09:35:30.474Z"
+    },
+    {
+      "id": "question-3399d768-4b81-4070-a460-48341df9a928",
+      "text": "Sophia, a Cloud Solutions Architect at a telecommunications company, plans to expose several integrations as APIs via Oracle Integration Cloud. Which aspect should she prioritize to ensure security and accessibility?",
+      "createdAt": "2025-05-06T09:35:30.990Z"
+    },
+    {
+      "id": "question-bab65bb5-9958-4dd0-a420-2e8dc2523113",
+      "text": "Ethan, a Lead Software Engineer at a logistics firm, wants to implement a continuous integration/continuous deployment (CI/CD) pipeline for Oracle Integration Cloud. What should be his initial focus to set this up effectively?",
+      "createdAt": "2025-05-06T09:35:31.713Z"
+    },
+    {
+      "id": "question-b9c53223-2c2f-4e49-90ac-78d96d0095d7",
+      "text": "Emily, a systems architect at a manufacturing firm, manages 1,000 integrations in Oracle OIC and faces issues with conflicting updates from multiple developers, causing flow disruptions. Which configuration best ensures robust version control for integrations?",
+      "createdAt": "2025-05-06T09:35:32.327Z"
+    },
+    {
+      "id": "question-cccd5090-750b-44c8-a6f8-1cdb3cc753bf",
+      "text": "Sarah, an IT manager at a healthcare provider, notices that Oracle OIC struggles with resource contention for 2,000 integrations, slowing down critical patient data flows. Which solution best optimizes resource allocation for OIC basics?",
+      "createdAt": "2025-05-06T09:35:33.763Z"
+    },
+    {
+      "id": "question-aada0aa4-d789-4d40-b21f-3abd0948b39a",
+      "text": "Olivia, a security analyst at a technology firm, identifies unauthorized access to 700 OIC integrations due to overly permissive user roles, risking data breaches. Which governance approach best secures user access in OIC?",
+      "createdAt": "2025-05-06T09:35:34.296Z"
+    },
+    {
+      "id": "question-7c22f6c6-a6ee-4ba8-9e3e-c7cc8d8aedcb",
+      "text": "Jacob, a systems administrator at an e-commerce company, encounters issues when faulty updates to 900 OIC integrations disrupt order processing, with no quick recovery mechanism. Which strategy best enables efficient rollback for integration flows?",
+      "createdAt": "2025-05-06T09:35:34.733Z"
+    },
+    {
+      "id": "question-68cb580f-c805-4440-aeba-489a2f9c69c7",
+      "text": "Sophia, a finance lead at a healthcare provider, struggles to manage rising costs for 1,200 OIC integrations due to untracked resource usage. Which configuration best enables precise cost tracking for integrations?",
+      "createdAt": "2025-05-06T09:35:35.215Z"
+    },
+    {
+      "id": "question-f400eb0b-c32f-4954-b2ff-d5a8957e51f9",
+      "text": "Ethan, a cloud engineer at a retail chain, faces delays in 1,000 OIC integrations due to overlapping schedules, overloading system resources. Which solution best resolves scheduling conflicts for integration flows?",
+      "createdAt": "2025-05-06T09:35:36.304Z"
+    },
+    {
+      "id": "question-0ba8a316-7502-4a68-bace-fba615ea7335",
+      "text": "Ava, a data architect at a logistics firm, struggles with inconsistent metadata across 1,300 OIC integrations, causing errors in flow execution. Which approach buying metadata consistency?",
+      "createdAt": "2025-05-06T09:35:38.418Z"
+    },
+    {
+      "id": "question-d4761573-f044-47c5-b7a0-dd8355039214",
+      "text": "Noah, an IT lead at a technology firm, anticipates a doubling of 600 OIC integrations due to a new product launch, risking performance degradation. Which planning strategy best ensures scalability for integration flows?",
+      "createdAt": "2025-05-06T09:35:39.071Z"
+    },
+    {
+      "id": "question-d4e77ed7-4456-4a96-8e41-4429d2de7c99",
+      "text": "Michael, a QA lead at a retail chain, struggles to validate 900 OIC integrations due to test environment overlaps, risking production errors. Which approach ensures isolated testing for integration flows?",
+      "createdAt": "2025-05-06T09:35:39.605Z"
+    },
+    {
+      "id": "question-a1ac8d43-8bb5-4a74-950e-a424e37c92a1",
+      "text": "David, a DevOps engineer at a logistics company, faces cascading failures in 1,300 OIC integrations due to undetected dependencies, delaying supply chain updates. Which configuration resolves dependency conflicts?",
+      "createdAt": "2025-05-06T09:35:40.267Z"
+    },
+    {
+      "id": "question-e7ac485c-a563-40a7-90ff-bf6d2ccef152",
+      "text": "Ethan, a cloud engineer at a retail chain, encounters resource overloads in OIC due to scheduling conflicts in 1,200 integrations, delaying customer updates. Which solution manages scheduling conflicts?",
+      "createdAt": "2025-05-06T09:35:40.995Z"
+    },
+    {
+      "id": "question-f4675f00-97e5-42e2-9f43-0e0cd4ee9fcb",
+      "text": "Ava, a data architect at a logistics firm, faces execution errors in 1,100 OIC integrations due to inconsistent metadata across flows. Which approach enforces metadata consistency?",
+      "createdAt": "2025-05-06T09:35:42.616Z"
+    },
+    {
+      "id": "question-f7740f16-8a54-4fd5-a976-6ed5cbd4ff8b",
+      "text": "A retail company is facing issues with an integration flow that intermittently fails during execution. What is the best approach to debug the issue in Oracle Integration Cloud?",
+      "createdAt": "2025-05-06T09:35:43.282Z"
+    },
+    {
+      "id": "question-9cd7dc77-bcce-4923-bc98-1a6f93a4c54f",
+      "text": "A logistics company wants to implement an event-driven integration to trigger actions based on real-time events. What is the first step in setting up such an integration in Oracle Integration Cloud?",
+      "createdAt": "2025-05-06T09:35:43.902Z"
+    },
+    {
+      "id": "question-8622c4bc-155c-4662-98db-d2831b878ad2",
+      "text": "A financial institution wants to deploy an integration flow across multiple environments while maintaining consistency. What is the recommended approach in Oracle Integration Cloud?",
+      "createdAt": "2025-05-06T09:35:44.539Z"
+    },
+    {
+      "id": "question-c2fbb882-ecf4-478c-a7f8-a96d235a5223",
+      "text": "A healthcare organization wants to implement error recovery mechanisms for its integration flows to ensure data consistency. What is the best practice for error recovery in Oracle Integration Cloud?",
+      "createdAt": "2025-05-06T09:35:45.182Z"
+    },
+    {
+      "id": "question-9a25160a-336e-454c-aeb7-1d1116add3c6",
+      "text": "John, a financial analyst, wants to create an integration to synchronize data between Oracle ERP and a third-party payroll system. What is the best approach to select the integration pattern?",
+      "createdAt": "2025-05-06T09:35:46.742Z"
+    },
+    {
+      "id": "question-71f7bc78-1b7a-4d23-ba79-e10be09d4723",
+      "text": "Sarah, an IT administrator, needs to configure a trigger for an integration that starts when a new customer record is created in Oracle Sales Cloud. What is the recommended approach?",
+      "createdAt": "2025-05-06T09:35:47.298Z"
+    },
+    {
+      "id": "question-b5a173ce-1833-46d7-87fd-f12e3f47e96b",
+      "text": "Michael, a logistics manager, wants to design an integration flow to automate shipment tracking updates. What is the first step in designing the integration flow?",
+      "createdAt": "2025-05-06T09:35:47.945Z"
+    },
+    {
+      "id": "question-99383ccb-15ee-4612-9286-d9672551a0d0",
+      "text": "Emily, a healthcare consultant, needs to connect Oracle Integration Cloud to a third-party medical records system. How can she set up the connection?",
+      "createdAt": "2025-05-06T09:35:48.545Z"
+    },
+    {
+      "id": "question-fb441734-b632-4537-a99d-9595cc450776",
+      "text": "David, a software engineer, has completed the development of an integration flow and wants to test its functionality. What is the best practice for testing the integration flow?",
+      "createdAt": "2025-05-06T09:35:49.265Z"
+    },
+    {
+      "id": "question-6a29356b-39d9-40e1-8452-72bd1649f052",
+      "text": "Robert, a business analyst, wants to implement error handling mechanisms in an integration flow to ensure data consistency. What is the best practice for error handling in Oracle Integration Cloud?",
+      "createdAt": "2025-05-06T09:35:50.826Z"
+    },
+    {
+      "id": "question-a47c350c-6186-455b-9875-26b268b8d277",
+      "text": "Lisa, a supply chain manager, wants to optimize the performance of an integration flow that processes large volumes of data. What is the recommended approach?",
+      "createdAt": "2025-05-06T09:35:51.412Z"
+    },
+    {
+      "id": "question-46c3c94a-ae2d-4917-ba9e-1f3094128cfe",
+      "text": "Emily, a systems architect at a manufacturing firm, creates 1,000 integrations in Oracle OIC but struggles with managing multiple versions, causing conflicts during updates. Which approach best ensures robust versioning for new integrations?",
+      "createdAt": "2025-05-06T09:35:51.968Z"
+    },
+    {
+      "id": "question-19985ffd-6972-495c-ade1-42e62e4a38f3",
+      "text": "Michael, a DevOps engineer at a retail chain, faces cascading failures when creating 800 OIC integrations due to undocumented dependencies, delaying customer data syncs. Which configuration best manages dependencies during integration creation?",
+      "createdAt": "2025-05-06T09:35:52.754Z"
+    },
+    {
+      "id": "question-6757833a-b565-497c-a80e-8956781de104",
+      "text": "Sarah, an IT manager at a healthcare provider, anticipates a surge to 1,200 OIC integrations for a new patient portal, risking performance degradation. Which strategy best ensures scalability when creating these integrations?",
+      "createdAt": "2025-05-06T09:35:53.468Z"
+    },
+    {
+      "id": "question-592c85dd-9592-4a22-9f02-b8fd234b8978",
+      "text": "David, a cybersecurity lead at a logistics company, identifies weak authentication in 900 OIC integrations during creation, risking unauthorized access. Which approach best secures integrations at the creation stage?",
+      "createdAt": "2025-05-06T09:35:55.143Z"
+    },
+    {
+      "id": "question-12d0ca26-83de-48c2-8244-6cf23a298592",
+      "text": "Olivia, a data architect at a technology firm, encounters errors in 1,000 OIC integrations due to inconsistent metadata during creation, disrupting flow execution. Which solution best enforces metadata consistency when creating integrations?",
+      "createdAt": "2025-05-06T09:35:55.960Z"
+    },
+    {
+      "id": "question-e44cf294-dcc2-4844-bf70-670ba693ea8b",
+      "text": "Jacob, a finance analyst at an e-commerce company, struggles to track costs for 1,300 OIC integrations during creation, complicating budget planning. Which configuration best enables cost allocation for new integrations?",
+      "createdAt": "2025-05-06T09:35:56.586Z"
+    },
+    {
+      "id": "question-5ac3fbd9-0125-4c7a-98b0-535ae676ffe1",
+      "text": "Sophia, a systems engineer at a healthcare provider, creates 1,100 OIC integrations but faces delays due to redundant flow development, increasing project timelines. Which approach best enhances reusability when creating integrations?",
+      "createdAt": "2025-05-06T09:35:57.181Z"
+    },
+    {
+      "id": "question-5ffeae94-68e7-44cb-99f7-2c7fa0b19a41",
+      "text": "Ethan, a compliance officer at a retail chain, finds that 950 OIC integrations lack audit trails during creation, risking regulatory violations. Which configuration best ensures auditability when creating integrations?",
+      "createdAt": "2025-05-06T09:35:57.872Z"
+    },
+    {
+      "id": "question-b2a5ef28-11f2-43d0-a397-6ec960c6e845",
+      "text": "Emily, an integration architect, needs to ensure 15+ projects share SAP and Salesforce connections securely. Which OIC feature enforces centralized credential management?",
+      "createdAt": "2025-05-06T09:35:59.510Z"
+    },
+    {
+      "id": "question-7a077486-629d-4f27-a126-a78e75dfb292",
+      "text": "David configures an order processing integration but notices tracking fields aren't propagated to child integrations. Which OIC feature resolves this?",
+      "createdAt": "2025-05-06T09:36:00.264Z"
+    },
+    {
+      "id": "question-47d82d47-1f52-4117-bfaa-9482234067bf",
+      "text": "A supply chain integration processes 500 parallel orders. How should Sarah handle partial failures without losing successful transactions?",
+      "createdAt": "2025-05-06T09:36:00.991Z"
+    },
+    {
+      "id": "question-672195eb-ae6d-42cd-ba15-c0ee7b760651",
+      "text": "After deploying buggy v2.1 of a payment integration, John needs immediate rollback. Which deployment strategy preserves SLAs?",
+      "createdAt": "2025-05-06T09:36:01.654Z"
+    },
+    {
+      "id": "question-f11d0a78-2d73-4db9-9eb1-fed04243d84d",
+      "text": "An insurance claim integration processes 2 GB TIFF files. Which OIC action prevents timeout errors?",
+      "createdAt": "2025-05-06T09:36:02.406Z"
+    },
+    {
+      "id": "question-7c8efd49-6175-4a95-8044-4edfe10b16af",
+      "text": "A hospital integration must convert legacy HL7 messages to FHIR standards. Which OIC component ensures HIPAA compliance?",
+      "createdAt": "2025-05-06T09:36:04.211Z"
+    },
+    {
+      "id": "question-2fc6c493-6dfd-4a55-8f84-78b267f9e3f1",
+      "text": "During peak loads, an ML inference integration experiences 8-second function startup delays. Which OIC configuration optimizes performance?",
+      "createdAt": "2025-05-06T09:36:04.849Z"
+    },
+    {
+      "id": "question-09424b82-b420-46df-83ef-3149c202d902",
+      "text": "Linda extends a prebuilt CRM accelerator but needs to preserve customizations during Oracle updates. Which OIC project feature enables this?",
+      "createdAt": "2025-05-06T09:36:05.593Z"
+    },
+    {
+      "id": "question-15903752-fc91-4b38-a6b9-ee17e96fc1e9",
+      "text": "James, a solution developer in a logistics firm, is designing an asynchronous integration that must wait for a response from an external system before continuing processing. He needs to ensure the integration can handle delayed acknowledgments correctly. What should he include to support this requirement?",
+      "createdAt": "2025-05-06T09:36:06.243Z"
+    },
+    {
+      "id": "question-ce423d41-ddc0-4e2f-9c51-ce1dd02951c8",
+      "text": "Olivia, an integration specialist at a retail firm, is building an integration where routing decisions need to vary based on item category codes. She wants a flexible method to externalize routing values without modifying logic directly. What feature should she use?",
+      "createdAt": "2025-05-06T09:36:07.061Z"
+    },
+    {
+      "id": "question-d0a6731d-2516-4cbc-9879-5c9c09d9bd89",
+      "text": "Noah, a cloud engineer for a university’s IT department, needs to set up a scheduled integration to fetch student enrollment records from a system daily. The date range should be adjustable without altering the integration logic. What is the best way to achieve this?",
+      "createdAt": "2025-05-06T09:36:08.841Z"
+    },
+    {
+      "id": "question-74dac6a1-62f2-4360-83d3-c53fd6d750d2",
+      "text": "Mason, a middleware consultant at an insurance company, needs to route integration logic based on policy type. He wants to avoid deeply nested if-else statements for better readability. What design element should he use for this requirement?",
+      "createdAt": "2025-05-06T09:36:43.745Z"
+    },
+    {
+      "id": "question-af04e061-cb67-41f7-804f-642d69b07df3",
+      "text": "Emma, an integration analyst at a medical research center, wants to avoid managing external schema files when defining request and response structures for an app-driven integration. What approach can she use to meet this need?",
+      "createdAt": "2025-05-06T09:36:44.470Z"
+    },
+    {
+      "id": "question-78249a42-7852-4149-9b51-8d964008f3bd",
+      "text": "Ethan, an integration lead at a government department, needs to temporarily hold a data file retrieved via REST before transforming and sending it to an internal system. No FTP usage is allowed. What should he do?",
+      "createdAt": "2025-05-06T09:37:19.474Z"
+    },
+    {
+      "id": "question-bdd304cc-7f57-462a-9e76-5c67c6bfe5cd",
+      "text": "Sophia, from a finance consulting firm, is building an app-driven integration that submits invoices but must first fetch customer credit scores from a third-party API before proceeding. How should she enrich the payload with this additional data?",
+      "createdAt": "2025-05-06T09:37:20.234Z"
+    },
+    {
+      "id": "question-60d2af21-f1b4-4d85-8740-7b2de7d946f6",
+      "text": "Jessica, an integration developer in Austin, needs to convert CSV order data from a legacy system to JSON for a cloud application. Which OIC component provides the simplest solution?",
+      "createdAt": "2025-05-06T09:37:22.066Z"
+    },
+    {
+      "id": "question-ae7e22b6-f3f5-43e1-84d3-b36e3e41eebf",
+      "text": "Ryan, a systems analyst in Denver, must configure OIC to connect to an on-premises database that requires VPN access. Which connection type should be used?",
+      "createdAt": "2025-05-06T09:37:22.962Z"
+    },
+    {
+      "id": "question-3bc30ab7-e2b8-452a-a7df-7b9fbd92500f",
+      "text": "Michelle, an operations specialist in Atlanta, needs to run a customer data sync every night at 2 AM. Which trigger type should she configure?",
+      "createdAt": "2025-05-06T09:37:23.702Z"
+    },
+    {
+      "id": "question-0d9a39fa-958f-4220-9dba-c9d67170794c",
+      "text": "Kevin, a support engineer in Seattle, needs to receive email alerts when invoice integrations fail. Which OIC feature should he configure?",
+      "createdAt": "2025-05-06T09:37:24.438Z"
+    },
+    {
+      "id": "question-d762a530-a745-4f86-a0fe-baf3f0206ac3",
+      "text": "Lisa, an architect in Boston, needs to integrate with Oracle ERP Cloud. Which adapter provides the most native connectivity?",
+      "createdAt": "2025-05-06T09:37:25.426Z"
+    },
+    {
+      "id": "question-2f348a40-fb6f-4350-9188-7743de896d1e",
+      "text": "David, a developer in Dallas, needs to add customer region information to order data by looking up against a reference table. Which OIC component should he use?",
+      "createdAt": "2025-05-06T09:37:27.205Z"
+    },
+    {
+      "id": "question-7dd97541-27ea-4f80-97fe-37580655f642",
+      "text": "A financial services firm needs an OIC integration to process a large batch of transactions with parallel enrichment and validation steps, ensuring rollback of all steps for a transaction if any fails to maintain consistency. Which OIC feature or pattern best achieves this parallel processing with transactional integrity?",
+      "createdAt": "2025-05-06T09:37:27.971Z"
+    },
+    {
+      "id": "question-aa740584-982e-4fd3-a6ec-0d40a8531d0f",
+      "text": "A logistics company needs an OIC integration to route shipment notifications to downstream systems based on complex, frequently updated rules using multiple payload fields (e.g., shipment type, country, weight, value), managed centrally without redeploying. Which OIC capability best enables this dynamic routing logic?",
+      "createdAt": "2025-05-06T09:37:28.753Z"
+    },
+    {
+      "id": "question-94bd6e40-4625-4079-bb79-a60aa1479de7",
+      "text": "A healthcare provider's OIC integration sends patient registration requests to an external system that responds asynchronously, requiring reliable receipt and correlation of confirmations despite network issues. Which OIC pattern and component best ensures delivery and correlation?",
+      "createdAt": "2025-05-06T09:37:29.673Z"
+    },
+    {
+      "id": "question-71cd8e90-ae61-4d87-92cb-6e9fea1e89be",
+      "text": "An airline's OIC integration with external flight booking systems needs to transform diverse error responses into a consistent fault payload, apply error-type-based retry strategies, and escalate persistent errors to a human workflow. Which OIC error handling features best meet this requirement?",
+      "createdAt": "2025-05-06T09:37:30.545Z"
+    },
+    {
+      "id": "question-29a814dc-543f-445a-9a1a-5373571db8a7",
+      "text": "A research institution needs an OIC integration to transform complex scientific instrument output (nested XML with inconsistent naming) into a standardized data model, using custom functions, contextual variables, and conditional mapping based on data element presence. Which OIC data mapping features best support this intricate transformation logic?",
+      "createdAt": "2025-05-06T09:37:32.461Z"
+    },
+    {
+      "id": "question-26880b75-5737-4ebd-a49c-c96cae697572",
+      "text": "An insurance company needs to automate processing of unstructured claim PDFs in OIC, extracting policy number, claimant details, claim amount, and accident description to start a workflow. Which OIC capability, with OCI services, best enables this intelligent document processing?",
+      "createdAt": "2025-05-06T09:37:33.583Z"
+    },
+    {
+      "id": "question-562bc61b-1b4e-418f-9fe4-b4acb8f97311",
+      "text": "Grace, an API architect at a media streaming company, has developed several OIC integrations that expose internal data and functionalities as REST APIs for consumption by mobile applications and partner systems. She needs to implement robust API management capabilities, including rate limiting to prevent abuse, security policies (e.g., OAuth 2.0 authentication), and API documentation. Which advanced OIC feature or integrated service would best address these API management requirements?",
+      "createdAt": "2025-05-06T09:37:34.515Z"
+    },
+    {
+      "id": "question-46b8b7d0-cadc-4426-b9f0-11fc7e34b0bd",
+      "text": "Henry, a cloud-native application developer at a FinTech startup, is building an OIC integration that needs to orchestrate a series of calls to several independent microservices deployed on OCI Container Engine for Kubernetes (OKE). The endpoints of these microservices might change dynamically based on deployment updates. Henry needs a way to discover and invoke these microservices reliably within his OIC integration. Which advanced OIC capability would best facilitate this dynamic microservice orchestration?",
+      "createdAt": "2025-05-06T09:37:35.460Z"
+    },
+    {
+      "id": "question-cb9d8bc7-fcb8-4729-9323-9c88f1b80e8a",
+      "text": "Isabella, a data engineer at an IoT platform provider, is building an OIC integration that needs to process a high-volume, real-time stream of sensor data coming from numerous connected devices. She needs to ingest this data into OIC for immediate processing and then route it to various downstream analytics and storage systems. Which advanced OIC capability, in conjunction with OCI services, would best handle this real-time data streaming requirement?",
+      "createdAt": "2025-05-06T09:37:36.277Z"
+    },
+    {
+      "id": "question-47d88baa-a9d3-4d1e-88e6-1a8cf15f146d",
+      "text": "Jackson, a customer experience analyst at a retail company, wants to integrate customer feedback from various sources (social media, surveys) into OIC and perform sentiment analysis to identify trends and issues. He needs to analyze the text of these feedback entries and determine the overall sentiment (positive, negative, neutral) to trigger appropriate follow-up actions. Which advanced OIC capability, in conjunction with OCI services, would best enable this requirement?",
+      "createdAt": "2025-05-06T09:37:38.890Z"
+    },
+    {
+      "id": "question-0488c597-d2fe-4f47-9960-2c6741b51642",
+      "text": "Kayla, an integration architect at a specialized manufacturing firm, needs to integrate OIC with a proprietary, legacy system for which no pre-built adapter exists. This system exposes its functionalities through a unique set of APIs with custom authentication mechanisms and data formats. What is the most appropriate advanced OIC capability for building a reusable and robust integration with this proprietary system?",
+      "createdAt": "2025-05-06T09:37:41.193Z"
+    },
+    {
+      "id": "question-e09be8f4-9f90-4af1-bf7e-fdd864f613db",
+      "text": "A solutions architect at a healthcare provider needs to design an event-driven integration architecture in OIC that processes patient admission events through multiple downstream systems while maintaining transactional integrity across heterogeneous endpoints. Which approach would provide the most reliable event propagation?",
+      "createdAt": "2025-05-06T09:38:26.541Z"
+    },
+    {
+      "id": "question-2a10098e-b0d1-4f05-b8f6-21fd72c37254",
+      "text": "A senior integration developer at a manufacturing company needs to implement a bidirectional synchronization mechanism between OIC and their IoT platform to maintain digital twins of production equipment with millisecond-level accuracy. Which integration pattern would provide the most precise synchronization?",
+      "createdAt": "2025-05-06T09:38:27.612Z"
+    },
+    {
+      "id": "question-8bcdca39-2e21-47b3-b1a3-bb4e59d9db72",
+      "text": "A cybersecurity specialist at a financial institution needs to implement a quantum-resistant security framework for all integrations in OIC that will remain secure against future quantum computing attacks. Which security approach would provide the most future-proof protection?",
+      "createdAt": "2025-05-06T09:39:03.058Z"
+    },
+    {
+      "id": "question-70ce2308-a19d-4188-b0e6-d762ab391545",
+      "text": "An integration architect at a retail company needs to design an integration in OIC that can automatically adapt to schema changes in source systems without requiring manual mapping updates or integration downtimes. Which approach would provide the most resilient adaptation?",
+      "createdAt": "2025-05-06T09:39:15.302Z"
+    },
+    {
+      "id": "question-5c3398c6-286a-45fc-a25e-f07bc81fa086",
+      "text": "A technical lead at a telecommunications company needs to design an integration solution in OIC that orchestrates processes across AWS, Azure, and OCI environments while maintaining consistent governance and error handling. Which architectural approach would provide the most unified management?",
+      "createdAt": "2025-05-06T09:39:18.670Z"
+    },
+    {
+      "id": "question-881c1a00-e8a3-4ca9-934e-44a7611d8da9",
+      "text": "A security architect at a government agency needs to implement a zero-trust security model for all integrations in OIC that enforces continuous validation for every access attempt regardless of source. Which security implementation would be most effective?",
+      "createdAt": "2025-05-06T09:39:20.045Z"
+    },
+    {
+      "id": "question-fa5b347f-bcbf-4e6c-9c3d-aedac6967526",
+      "text": "A DevOps engineer at an insurance company needs to implement a system in OIC that can detect unusual integration behavior patterns that might indicate security breaches or performance issues before they impact business operations. Which detection approach would provide the earliest warning?",
+      "createdAt": "2025-05-06T09:39:21.154Z"
+    },
+    {
+      "id": "question-6531287d-6630-4c40-959c-2acb61824cf8",
+      "text": "A systems architect at a transportation company needs to design an OIC integration solution for their fleet of vehicles that can continue processing transactions during extended periods without internet connectivity. Which edge processing approach would provide the most resilient operation?",
+      "createdAt": "2025-05-06T09:39:22.243Z"
+    },
+    {
+      "id": "question-daf67e08-99b6-4b9e-a7de-2da527af5ce7",
+      "text": "A business transformation manager at a financial services firm needs to implement an integration solution in OIC that can discover automation opportunities across enterprise systems by analyzing integration data flows. Which discovery methodology would yield the most actionable insights?",
+      "createdAt": "2025-05-06T09:39:36.289Z"
+    },
+    {
+      "id": "question-f86d8257-1bf7-496d-9a4a-57a04d3af016",
+      "text": "A solutions architect at a supply chain company needs to implement a blockchain-based verification system in OIC that creates immutable audit trails for critical business transactions across multiple trading partners. Which integration architecture would provide the most trustworthy verification?",
+      "createdAt": "2025-05-06T09:39:37.319Z"
+    },
+    {
+      "id": "question-d708c555-f10b-44f1-8828-774cd685904a",
+      "text": "A data integration specialist at a research institution needs to implement a solution in OIC that can automatically create data mappings between disparate systems using natural language descriptions of fields rather than requiring technical schema definitions. Which approach would provide the most accurate automated mapping?",
+      "createdAt": "2025-05-06T09:39:38.315Z"
+    },
+    {
+      "id": "question-47bd1e7a-ab9b-404a-ab83-744084222388",
+      "text": "An integration architect at a healthcare system needs to implement an error handling framework in OIC that can correlate cascading failures across multiple integration points while maintaining HIPAA compliance when patient data is involved. Which approach would provide the most comprehensive error tracking?",
+      "createdAt": "2025-05-06T09:40:27.354Z"
+    },
+    {
+      "id": "question-c39b0bb8-10b9-47c7-8e3e-d07b62cbf19d",
+      "text": "A senior integration developer at a financial services firm needs to implement a self-optimizing retry mechanism in OIC that dynamically adjusts retry parameters based on error patterns and endpoint behavior to maximize transaction success rates. Which approach would provide the most adaptive retry behavior?",
+      "createdAt": "2025-05-06T09:40:28.298Z"
+    },
+    {
+      "id": "question-f1275b7f-a87f-4f51-a6af-32549e21b65e",
+      "text": "A DevOps engineer at an e-commerce company needs to implement an error prediction system in OIC that can identify potential integration failures before they occur during peak shopping periods. Which predictive approach would provide the most effective early warning?",
+      "createdAt": "2025-05-06T09:41:16.345Z"
+    },
+    {
+      "id": "question-eb7655b8-5505-44e1-8b59-967845971c6a",
+      "text": "A solutions architect at a manufacturing company needs to implement an error handling framework in OIC that maintains data consistency across heterogeneous systems even when failures occur mid-transaction. Which recovery approach would provide the strongest consistency guarantees?",
+      "createdAt": "2025-05-06T09:41:17.284Z"
+    },
+    {
+      "id": "question-332c49d9-1b9e-4f47-a9e1-e5eb4b8c5345",
+      "text": "An integration operations manager at a telecommunications company needs to implement a system in OIC that captures comprehensive error context to enable AI-assisted triage and resolution of integration failures. Which telemetry approach would provide the most actionable diagnostic data?",
+      "createdAt": "2025-05-06T09:41:18.334Z"
+    },
+    {
+      "id": "question-8d75cbcb-f1d0-40a3-b9e0-c45b6a271702",
+      "text": "A reliability engineer at a financial institution needs to implement a controlled chaos engineering framework to verify that error handling in OIC integrations functions correctly under unexpected failure conditions. Which testing approach would provide the most realistic validation?",
+      "createdAt": "2025-05-06T09:41:19.332Z"
+    },
+    {
+      "id": "question-246a242d-674d-47fb-9349-b4b60d85479d",
+      "text": "A technical lead at a retail corporation needs to design an error recovery system in OIC that orchestrates recovery actions across multiple layers (infrastructure, services, data) when complex failures occur. Which orchestration approach would provide the most comprehensive recovery?",
+      "createdAt": "2025-05-06T09:41:20.274Z"
+    },
+    {
+      "id": "question-8321b8e0-1d86-43d5-8327-641d8e30f22f",
+      "text": "Emily, a systems architect at a healthcare provider, manages 1,500 OIC integrations where errors in patient data flows are routed to generic handlers, delaying critical resolutions. Which advanced error handling configuration best routes errors to context-specific handlers?",
+      "createdAt": "2025-05-06T09:41:34.329Z"
+    },
+    {
+      "id": "question-9947d9d5-d8c1-43a4-b728-84f278b5a81e",
+      "text": "Michael, a DevOps engineer at a logistics company, struggles to assess the downstream impact of errors in 1,200 OIC integrations, risking supply chain disruptions. Which solution best automates error impact analysis for advanced error handling?",
+      "createdAt": "2025-05-06T09:41:35.295Z"
+    },
+    {
+      "id": "question-67b6887b-eed9-4c6a-872c-6562b8fa4450",
+      "text": "Sarah, an IT manager at a manufacturing firm, needs to test error handling for 1,000 OIC integrations but lacks realistic failure scenarios, risking untested flows. Which buzzword-driven approach best simulates errors using digital twins during integration creation?",
+      "createdAt": "2025-05-06T09:41:36.500Z"
+    },
+    {
+      "id": "question-f0c1941b-8a98-4f28-afba-8c4786122b71",
+      "text": "David, a systems analyst at a retail chain, faces performance degradation in Oracle OIC due to excessive error notifications from 1,300 non-critical integrations, overwhelming the team. Which advanced configuration best suppresses non-critical error alerts?",
+      "createdAt": "2025-05-06T09:41:37.500Z"
+    },
+    {
+      "id": "question-1e52b3ee-a6dc-4ea9-8f9f-dacf4d385a62",
+      "text": "Olivia, a cloud engineer at a technology firm, struggles with rigid recovery workflows in Oracle OIC for 1,100 integrations, delaying error resolution in customer data syncs. Which solution best customizes recovery workflows for advanced error handling?",
+      "createdAt": "2025-05-06T09:41:38.528Z"
+    },
+    {
+      "id": "question-e788692d-77fd-4c19-b560-97a3662d2dbc",
+      "text": "Jacob, a compliance officer at a financial institution, identifies insufficient audit trail details for 900 OIC integration errors, risking regulatory penalties. Which advanced error handling approach best enhances audit trail granularity?",
+      "createdAt": "2025-05-06T09:41:40.677Z"
+    },
+    {
+      "id": "question-3ee9585c-c468-4ca9-b9d9-cf76a386da52",
+      "text": "Sophia, a finance lead at an e-commerce company, faces challenges estimating the financial impact of errors in 1,400 OIC integrations, complicating budget forecasts. Which buzzword-driven solution best predicts error costs for advanced error handling?",
+      "createdAt": "2025-05-06T09:41:41.781Z"
+    },
+    {
+      "id": "question-2e29d824-bfbd-4b68-b922-b6e7ccc68fe0",
+      "text": "Emily, a cloud architect at a logistics company, processes 10,000 daily shipment files in Oracle OIC, but manual orchestration causes delays in supply chain updates. Which advanced file processing configuration best leverages serverless architecture for efficient orchestration?",
+      "createdAt": "2025-05-06T09:41:42.934Z"
+    },
+    {
+      "id": "question-8570f5d0-a53f-4344-a411-1c13b1bf63ff",
+      "text": "Michael, a systems engineer at a healthcare provider, struggles with invalid patient data files in 5,000 OIC integrations, risking compliance violations. Which buzzword-driven solution best validates file integrity using AI during processing?",
+      "createdAt": "2025-05-06T09:41:43.948Z"
+    },
+    {
+      "id": "question-54f6ba7c-eb3e-4940-88ec-30236d19a020",
+      "text": "Sarah, an IT manager at a retail chain, anticipates a surge to 8,000 daily transaction files in Oracle OIC, risking performance degradation. Which configuration best ensures scalability for file processing under high load?",
+      "createdAt": "2025-05-06T09:42:31.445Z"
+    },
+    {
+      "id": "question-0367d8da-051c-47fb-8db5-4eefb427d9a2",
+      "text": "David, a cybersecurity lead at a financial institution, identifies unencrypted files in 4,000 OIC integrations, risking data breaches during storage. Which advanced file processing approach best secures files at rest?",
+      "createdAt": "2025-05-06T09:42:33.507Z"
+    },
+    {
+      "id": "question-8119292a-45cc-403c-8eb5-586f8c55d574",
+      "text": "Olivia, a compliance officer at a manufacturing firm, faces regulatory penalties due to insufficient audit trails for 6,000 processed files in Oracle OIC. Which solution best enhances audit trail granularity for file processing?",
+      "createdAt": "2025-05-06T09:42:34.477Z"
+    },
+    {
+      "id": "question-5ff7448e-9f1f-43d2-8a99-fdc176c876c8",
+      "text": "Jacob, a data architect at a technology firm, struggles with incompatible file formats in 3,000 OIC integrations, delaying customer data syncs. Which advanced file processing configuration best automates format transformation?",
+      "createdAt": "2025-05-06T09:43:21.657Z"
+    },
+    {
+      "id": "question-227645d5-dd93-4f59-bb43-bbedfaa2d9e0",
+      "text": "Sophia, a finance lead at an e-commerce company, detects rising costs for processing 7,000 daily files in Oracle OIC due to inefficient resource usage. Which buzzword-driven approach best optimizes file processing costs?",
+      "createdAt": "2025-05-06T09:43:22.818Z"
+    },
+    {
+      "id": "question-123a3769-6647-4d7f-89dd-42ed4c150f56",
+      "text": "Emily, a systems architect at a healthcare provider, manages 1,200 OIC integrations connecting to legacy EHR systems, but frequent schema changes cause connection failures. Which advanced configuration best leverages adaptive connectors to handle dynamic schemas?",
+      "createdAt": "2025-05-06T09:43:23.736Z"
+    },
+    {
+      "id": "question-2d14e10e-352f-46ef-9a63-bdb85e204ee6",
+      "text": "Michael, a cybersecurity lead at a financial institution, identifies weak authentication in OIC adapters for 1,000 banking integrations, risking unauthorized access. Which buzzword-driven solution best enforces zero-trust security for adapter connections?",
+      "createdAt": "2025-05-06T09:43:25.864Z"
+    },
+    {
+      "id": "question-78c31507-8683-4572-8930-7265664e9d82",
+      "text": "Sarah, an IT manager at a retail chain, faces performance bottlenecks in OIC when 1,500 adapter connections handle peak transaction loads, delaying customer data syncs. Which configuration best scales connection pools for high-volume adapters?",
+      "createdAt": "2025-05-06T09:44:25.173Z"
+    },
+    {
+      "id": "question-94bdc6a1-d782-4646-8f1b-b28718ab5190",
+      "text": "David, a DevOps engineer at a logistics company, struggles with adapter version mismatches in 900 OIC integrations, causing failures in supply chain flows. Which advanced approach best ensures version compatibility for adapter connections?",
+      "createdAt": "2025-05-06T09:44:26.214Z"
+    },
+    {
+      "id": "question-46794d13-280f-4765-bad9-a52efbb410f5",
+      "text": "Olivia, a compliance officer at a manufacturing firm, faces regulatory penalties due to insufficient audit trails for 1,100 OIC adapter connections, lacking detailed access logs. Which solution best enhances audit trail granularity for connections?",
+      "createdAt": "2025-05-06T09:45:13.677Z"
+    },
+    {
+      "id": "question-ec63e4bc-a2a8-46df-b2b5-c73a72ad5c91",
+      "text": "Jacob, a systems analyst at a technology firm, notices inefficient adapter performance in 1,300 OIC integrations, slowing customer data processing. Which buzzword-driven configuration best optimizes adapter performance using AI?",
+      "createdAt": "2025-05-06T09:45:14.824Z"
+    },
+    {
+      "id": "question-99e5cb73-a664-4e9f-b9a2-6b6f6282b882",
+      "text": "Sophia, a finance lead at an e-commerce company, detects rising costs for 1,400 OIC adapter connections due to underutilized resources. Which advanced approach best optimizes connection costs while maintaining performance?",
+      "createdAt": "2025-05-06T09:46:02.980Z"
+    },
+    {
+      "id": "question-32b9767d-1142-4c35-9db0-1ca80e67c77c",
+      "text": "John, a cloud architect, needs to dynamically configure connections in Oracle Integration Cloud based on runtime parameters. What is the best approach to achieve this?",
+      "createdAt": "2025-05-06T09:46:16.980Z"
+    },
+    {
+      "id": "question-3152a5fd-397f-4c3f-a503-b128a7e1f9e3",
+      "text": "Sarah, an integration specialist, wants to customize an adapter to handle specific data formats not supported by default. What is the recommended approach in Oracle Integration Cloud?",
+      "createdAt": "2025-05-06T09:46:17.962Z"
+    },
+    {
+      "id": "question-ba800a98-6a43-41c4-97b1-efede05eac5c",
+      "text": "Michael, a network engineer, needs to implement failover mechanisms for connections to ensure high availability. What is the best practice for configuring failover in Oracle Integration Cloud?",
+      "createdAt": "2025-05-06T09:47:32.148Z"
+    },
+    {
+      "id": "question-b20a2cbc-5e17-4d4b-9b21-054173bfda7c",
+      "text": "Emily, a performance analyst, wants to optimize the performance of an adapter that processes large volumes of data. What is the recommended approach in Oracle Integration Cloud?",
+      "createdAt": "2025-05-06T09:47:34.006Z"
+    },
+    {
+      "id": "question-6799a23c-a015-4f79-b392-01be8abecbfc",
+      "text": "David, a security consultant, needs to ensure that all connections in Oracle Integration Cloud comply with the latest encryption standards. What is the best approach to achieve this?",
+      "createdAt": "2025-05-06T09:47:36.392Z"
+    },
+    {
+      "id": "question-5ecf7aad-3826-4b13-897f-e0a2c3ee6b3c",
+      "text": "Jessica, a QA engineer, wants to test the compatibility of a new adapter with existing integrations. What is the recommended approach in Oracle Integration Cloud?",
+      "createdAt": "2025-05-06T09:47:40.150Z"
+    },
+    {
+      "id": "question-d45166f1-61a7-4f2d-a9ad-29f172c9e8e9",
+      "text": "Robert, a system administrator, needs to manage the lifecycle of connections in Oracle Integration Cloud, including creation, updates, and deactivation. What is the best practice for connection lifecycle management?",
+      "createdAt": "2025-05-06T09:47:41.988Z"
+    },
+    {
+      "id": "question-1db0ae62-c10a-4d6e-8cd1-b46d742cf139",
+      "text": "Jessica, a healthcare integrator, needs to transform HL7v2 messages to FHIR standards while masking PHI fields. Which OIC adapter ensures HIPAA compliance without custom coding?",
+      "createdAt": "2025-05-06T09:47:43.630Z"
+    },
+    {
+      "id": "question-df95c91a-a69f-4dc1-86f1-c51906596fbf",
+      "text": "A government agency requires segregated AS4 message streams for 50+ departments using the same trading partner. Which OIC configuration ensures isolation?",
+      "createdAt": "2025-05-06T09:47:45.137Z"
+    },
+    {
+      "id": "question-c830a7c0-7003-4d59-9d2e-44ee2d2cba20",
+      "text": "Taylor needs to connect OIC to a legacy ERP exposing only REST APIs with non-standard auth. Which tool accelerates secure integration?",
+      "createdAt": "2025-05-06T09:47:47.726Z"
+    },
+    {
+      "id": "question-73c86c87-2ae8-4ea4-968e-f6030978f107",
+      "text": "A retailer must group 1,000+ EDIFACT invoices nightly by vendor ID. Which OIC B2B feature automates this?",
+      "createdAt": "2025-05-06T09:47:49.571Z"
+    },
+    {
+      "id": "question-d0ae84c2-3792-4c73-b0de-6355d715cc51",
+      "text": "Michael is configuring a REST adapter connection to integrate a cloud CRM with Oracle Integration Cloud. Which step is required for successful connection creation?",
+      "createdAt": "2025-05-06T09:47:50.910Z"
+    },
+    {
+      "id": "question-8baf5caa-19e8-4f71-8fcb-49e32d1fc5d1",
+      "text": "Olivia needs to connect OIC to an on-premises Oracle database for real-time data sync. Which component must she deploy for secure connectivity?",
+      "createdAt": "2025-05-06T09:47:52.314Z"
+    },
+    {
+      "id": "question-d528da53-d6d1-4690-82d1-97323a7d2e27",
+      "text": "Ethan configures an FTP adapter connection for nightly file imports. Which setting ensures the adapter processes only files from a specific directory?",
+      "createdAt": "2025-05-06T09:47:53.582Z"
+    },
+    {
+      "id": "question-d285acf8-a9ef-442f-9bf3-ff4a58019c93",
+      "text": "Sophia is integrating with a legacy ERP system that requires WS-Security for SOAP messages. Which action is necessary when creating the SOAP adapter connection?",
+      "createdAt": "2025-05-06T09:47:55.855Z"
+    },
+    {
+      "id": "question-561536a0-962b-42bc-b727-817bdaffdbe4",
+      "text": "Daniel is tasked with connecting OIC to Oracle ERP Cloud using a SaaS application adapter. What must he provide to authenticate the connection?",
+      "createdAt": "2025-05-06T09:47:57.062Z"
+    },
+    {
+      "id": "question-437de740-d23d-4816-b4d2-8715ab7d73d0",
+      "text": "Emma needs to access a private HR application from OIC without exposing it to the public internet. Which feature should she configure?",
+      "createdAt": "2025-05-06T09:47:58.433Z"
+    },
+    {
+      "id": "question-7f82a88e-0c22-47b1-a069-9537cb7d4a40",
+      "text": "While configuring a third-party marketing API adapter in Oracle Integration Cloud, John, a middleware consultant, noticed intermittent failures due to OAuth token expiration during long-running processes. Which approach best ensures token validity throughout integration execution?",
+      "createdAt": "2025-05-06T09:47:59.839Z"
+    },
+    {
+      "id": "question-503570dd-7459-45eb-8328-1b75038d25a5",
+      "text": "Olivia, a cloud architect at an insurance firm, is tasked with migrating integrations to a new environment without exposing sensitive credentials for multiple SaaS adapters. Which method ensures credentials are managed securely and reused across environments?",
+      "createdAt": "2025-05-06T09:48:01.731Z"
+    },
+    {
+      "id": "question-8023bbbc-1f77-4446-a219-a3a60a9b161f",
+      "text": "Ethan, a system engineer at a logistics company, implemented a REST adapter with a callback URL, but customers reported incomplete order confirmations. Logs show callback responses are misrouted. What could resolve this issue effectively?",
+      "createdAt": "2025-05-06T09:48:07.711Z"
+    },
+    {
+      "id": "question-af539cea-939f-49c6-a46f-6dfc60a78db6",
+      "text": "Mia, a technical consultant at a government agency, integrated a citizen service platform via a REST adapter, which enforces strict API rate limits per minute. How should she prevent the integration from breaching this limit during peak load?",
+      "createdAt": "2025-05-06T09:48:11.063Z"
+    },
+    {
+      "id": "question-5bd12fc9-04a1-437d-b78c-3ba97348b97b",
+      "text": "Liam, working in a financial institution, configured a custom adapter to connect with a legacy account management system. During peak hours, the connection hangs indefinitely without error messages. What change should be made to handle such cases?",
+      "createdAt": "2025-05-06T09:48:13.042Z"
+    },
+    {
+      "id": "question-8d7b0f42-ffab-4f5f-a777-4734ed3b7076",
+      "text": "Isabella, an integration lead at a healthcare analytics company, is configuring a secure HTTPS connection using a REST adapter. The call fails due to an untrusted certificate from the external service. What is the most secure and sustainable solution?",
+      "createdAt": "2025-05-06T09:48:14.553Z"
+    },
+    {
+      "id": "question-d7a1b51d-bbeb-4b45-9088-882710ef219a",
+      "text": "Noah, an integration support specialist at a university, notices that several integrations are failing due to inactive connections in the production instance. Which diagnostic method best identifies the problem's root cause?",
+      "createdAt": "2025-05-06T09:48:15.999Z"
+    },
+    {
+      "id": "question-0f9390bf-ea58-4e29-b0d0-8ab74ac97112",
+      "text": "Emily, a senior OIC developer at a retail chain, attempted to process 500 customer orders in parallel using a SaaS adapter, but several transactions failed silently. What configuration should she review to fix this?",
+      "createdAt": "2025-05-06T09:48:18.394Z"
+    },
+    {
+      "id": "question-03ba3467-d0ed-493c-a067-790c61d39f34",
+      "text": "Mark, a cloud engineer in Chicago, needs to securely connect OIC to an on-premises Oracle Database containing sensitive HR data. Which authentication method provides the highest security while maintaining reliability?",
+      "createdAt": "2025-05-06T09:48:19.951Z"
+    },
+    {
+      "id": "question-fc4a7ec4-28eb-4da4-9dee-1c64d937ede3",
+      "text": "Sarah, an integration specialist in New York, needs to connect OIC to Salesforce to synchronize customer data. Which adapter configuration approach ensures optimal performance?",
+      "createdAt": "2025-05-06T09:48:21.302Z"
+    },
+    {
+      "id": "question-0a132f20-fdde-4058-bc6a-cc3cd33cafc7",
+      "text": "Emily, a security analyst at a retail chain, notices that 500 OIC integrations have overly permissive user roles, risking unauthorized access. Which configuration best restricts access for secure integration management?",
+      "createdAt": "2025-05-06T09:48:22.607Z"
+    },
+    {
+      "id": "question-aa5ddabe-f1c0-4f3d-81f1-cee71ae77d7c",
+      "text": "Michael, a systems administrator at a healthcare provider, identifies outdated credentials in 600 OIC connections, exposing patient data. Which approach best automates credential rotation for secure connections?",
+      "createdAt": "2025-05-06T09:48:24.033Z"
+    },
+    {
+      "id": "question-8ea0a76c-82f5-468e-8fef-bc54f361b171",
+      "text": "Sarah, an IT manager at a financial institution, needs to secure sensitive transaction data in 700 OIC integrations during transmission. Which solution best enforces data encryption for integration security?",
+      "createdAt": "2025-05-06T09:48:26.434Z"
+    },
+    {
+      "id": "question-523ac1c6-160c-4e72-8070-a491a984b1c6",
+      "text": "David, a DevOps engineer at a logistics company, struggles with expired API tokens in 400 OIC integrations, causing authentication failures. Which configuration best manages token lifecycles for secure APIs?",
+      "createdAt": "2025-05-06T09:48:27.761Z"
+    },
+    {
+      "id": "question-fdeed30f-d715-43f2-8d2b-b04dbbcaebda",
+      "text": "Olivia, a compliance officer at a manufacturing firm, faces issues with incomplete audit logs for 800 OIC integrations, risking regulatory violations. Which approach best enhances security audit logging?",
+      "createdAt": "2025-05-06T09:48:29.348Z"
+    },
+    {
+      "id": "question-a36723b1-c49f-4e27-a7bc-4127afe30d04",
+      "text": "Jacob, a cybersecurity lead at a technology firm, needs to restrict 600 OIC integration connections to trusted networks to prevent unauthorized access. Which solution best enforces network security?",
+      "createdAt": "2025-05-06T09:48:30.670Z"
+    },
+    {
+      "id": "question-d4c8bb7f-3889-448a-b636-499036d2c60d",
+      "text": "Sophia, a systems engineer at an e-commerce company, identifies weak adapter authentication in 500 OIC integrations, risking data breaches. Which configuration best strengthens adapter security?",
+      "createdAt": "2025-05-06T09:48:32.221Z"
+    },
+    {
+      "id": "question-8e6b453b-ae3f-4437-ba02-9b8612b6c610",
+      "text": "Ethan, a business analyst at a retail chain, struggles to create tailored dashboards in Oracle OIC Integration Insight for 600 integrations, limiting executive visibility. Which configuration best customizes dashboards for business needs?",
+      "createdAt": "2025-05-06T09:48:34.672Z"
+    },
+    {
+      "id": "question-5c999292-d412-4631-9675-108eca87fc3f",
+      "text": "Ava, a data analyst at a healthcare provider, needs to monitor real-time KPIs for 700 patient data integrations in OIC Integration Insight, but delays hinder insights. Which solution best enables real-time KPI tracking?",
+      "createdAt": "2025-05-06T09:48:36.164Z"
+    },
+    {
+      "id": "question-8015695b-15ae-496a-97ae-386063cc0442",
+      "text": "Noah, an IT manager at a logistics company, faces issues aggregating data from 500 OIC integrations in Integration Insight, causing incomplete business reports. Which approach best improves data aggregation for insights?",
+      "createdAt": "2025-05-06T09:48:37.652Z"
+    },
+    {
+      "id": "question-fd9e7b58-182f-4e76-be78-6fddf0a37976",
+      "text": "Emily, a systems analyst at a technology firm, struggles to correlate business events across 800 OIC integrations in Integration Insight, missing critical trends. Which configuration best enables event correlation for insights?",
+      "createdAt": "2025-05-06T09:48:39.460Z"
+    },
+    {
+      "id": "question-5f79c890-e1de-407c-a458-193d5dab11e7",
+      "text": "Michael, a security lead at a financial institution, identifies excessive user access to Integration Insight dashboards for 600 integrations, risking data exposure. Which solution best secures dashboard access?",
+      "createdAt": "2025-05-06T09:48:40.890Z"
+    },
+    {
+      "id": "question-a6819738-994c-42fb-956a-de8be7864915",
+      "text": "Sarah, a compliance officer at a manufacturing firm, faces regulatory issues with insufficient data retention for 700 integrations in OIC Integration Insight. Which configuration best ensures compliant data retention?",
+      "createdAt": "2025-05-06T09:48:43.389Z"
+    },
+    {
+      "id": "question-d70b32b2-bbaf-40bd-b0a6-52116b6fa814",
+      "text": "David, a business intelligence lead at an e-commerce company, needs to forecast trends from 500 OIC integrations in Integration Insight, but static reports limit accuracy. Which buzzword-driven solution best enables predictive modeling?",
+      "createdAt": "2025-05-06T09:48:44.794Z"
+    },
+    {
+      "id": "question-749629dd-1d40-4e32-ba1c-340139c2ae66",
+      "text": "John, a business analyst, needs to create a decision model in Oracle Integration Cloud to determine shipping costs based on weight and destination. What is the first step in configuring a decision table?",
+      "createdAt": "2025-05-06T09:48:46.369Z"
+    },
+    {
+      "id": "question-c4dfe103-a942-4fc9-aab6-2fad496827e4",
+      "text": "Sarah, an integration developer, wants to invoke a decision model from an integration flow to validate customer eligibility for a loan. What is the recommended approach?",
+      "createdAt": "2025-05-06T09:48:47.773Z"
+    },
+    {
+      "id": "question-71bb5a89-0d72-447c-8e1c-1e79e231b638",
+      "text": "Michael, a logistics manager, needs to implement a decision model with nested conditions to handle complex shipping rules. What is the best practice for designing such a model in Oracle Integration Cloud?",
+      "createdAt": "2025-05-06T09:48:49.291Z"
+    },
+    {
+      "id": "question-110ea2e0-1756-4e0c-9b36-c377df877d13",
+      "text": "Emily, a QA engineer, wants to test a decision model to ensure it produces accurate results for various scenarios. What is the best practice for testing decision models in Oracle Integration Cloud?",
+      "createdAt": "2025-05-06T09:48:51.780Z"
+    },
+    {
+      "id": "question-ee09ac16-7fce-4023-b2d3-d3a93cda221d",
+      "text": "David, a project manager, needs to maintain multiple versions of a decision model to support different business rules. What is the recommended approach in Oracle Integration Cloud?",
+      "createdAt": "2025-05-06T09:48:53.355Z"
+    },
+    {
+      "id": "question-53463a3d-b011-4691-ad2c-68f391948c95",
+      "text": "Jessica, a software engineer, wants to integrate a decision model with an external application to automate order approvals. What is the best approach to achieve this in Oracle Integration Cloud?",
+      "createdAt": "2025-05-06T09:48:54.768Z"
+    },
+    {
+      "id": "question-6c600d8e-6dff-48d4-a3a4-22e7a7ec4274",
+      "text": "Robert, a performance analyst, wants to optimize a decision model that evaluates thousands of transactions daily. What is the best practice for optimizing decision models in Oracle Integration Cloud?",
+      "createdAt": "2025-05-06T09:49:30.480Z"
+    },
+    {
+      "id": "question-e139e18f-bb94-4033-94e7-d0deab8157e6",
+      "text": "Rachel notices performance degradation when her integration frequently queries large lookup tables. Which approach optimizes lookup performance in OIC?",
+      "createdAt": "2025-05-06T09:49:32.117Z"
+    },
+    {
+      "id": "question-ea4cdbe2-d92a-4751-851e-59cd0f3de3e4",
+      "text": "Mark needs to resolve product codes using nested lookup tables with parent-child relationships. Which OIC feature supports this?",
+      "createdAt": "2025-05-06T09:49:34.669Z"
+    },
+    {
+      "id": "question-1da78a03-650d-4483-9d61-7ceea4b5bfbf",
+      "text": "Olivia wants her integration to select different lookup tables at runtime based on transaction type. How can she achieve this?",
+      "createdAt": "2025-05-06T09:49:36.246Z"
+    },
+    {
+      "id": "question-7592dd79-d7b3-43d5-80bf-ba0ed4929129",
+      "text": "James must maintain historical versions of lookup data for audit purposes while ensuring integrations use the latest version. Which design pattern applies?",
+      "createdAt": "2025-05-06T09:49:37.696Z"
+    },
+    {
+      "id": "question-92ad5dad-2e0a-4f5d-9b6e-937b5d9e3102",
+      "text": "Sophia’s integration requires matching records based on multiple lookup attributes simultaneously. Which OIC feature supports this?",
+      "createdAt": "2025-05-06T09:49:42.608Z"
+    },
+    {
+      "id": "question-ddd17cae-1906-41d8-9f89-0347c140d653",
+      "text": "Michael’s integration depends on a critical lookup service that occasionally becomes unavailable. How should he design failover?",
+      "createdAt": "2025-05-06T09:49:44.509Z"
+    },
+    {
+      "id": "question-9d5e28e6-8ac9-43bc-95b4-5f0b0b8ed95b",
+      "text": "Emily handles sensitive customer data in lookup tables and must ensure data-at-rest encryption. Which OIC practice secures lookup data?",
+      "createdAt": "2025-05-06T09:49:47.231Z"
+    },
+    {
+      "id": "question-eabeaa1f-8e61-4cc0-ab42-99955b6a9cd0",
+      "text": "A global supply chain company needs to monitor complex order fulfillment across multiple OIC integrations, tracking end-to-end flow, correlating instances (order creation, inventory, shipment, invoicing), and identifying bottlenecks. Which Integration Insight capability best enables this multi-instance business flow visibility?",
+      "createdAt": "2025-05-06T09:49:50.612Z"
+    },
+    {
+      "id": "question-33960137-1511-460c-8aad-2c30dd784b92",
+      "text": "A financial institution requires proactive monitoring of payment processing integrations, with business-level rules (e.g., high-value payments stuck over 30 minutes, high failure rates) triggering automated alerts for timely intervention. Which Integration Insight feature best enables this rule-based exception management?",
+      "createdAt": "2025-05-06T09:49:52.594Z"
+    },
+    {
+      "id": "question-ba707c1b-5cdd-4152-93e9-0a41ae06c297",
+      "text": "Quinn, a business intelligence analyst at a retail chain, needs to analyze the historical performance of their order processing integrations to identify trends and predict potential future issues (e.g., increasing order processing time during peak seasons, higher return rates for orders processed through specific channels). Which advanced Integration Insight capability would provide the most valuable insights for this predictive business outcome analysis?",
+      "createdAt": "2025-05-06T09:49:54.357Z"
+    },
+    {
+      "id": "question-c8852031-3d01-4109-a2fa-e5e32f2713e9",
+      "text": "A business director needs personalized, high-level dashboards in Integration Insight to view key business metrics and statuses across OIC integrations, with role-based access control limiting each department to relevant data. Which Integration Insight feature best enables these customizable, role-based dashboards?",
+      "createdAt": "2025-05-06T09:49:56.045Z"
+    },
+    {
+      "id": "question-b0c9ab37-fc61-40b3-9b48-90f356c99aaa",
+      "text": "Samuel, a data architect at an insurance provider, is using Integration Insight to monitor their claim processing integrations. He realizes that the raw integration data lacks certain crucial business context (e.g., customer tier, policy type) needed for more insightful analysis. Which advanced Integration Insight technique would best allow him to enrich the tracked business milestones with this additional contextual data without modifying the core integration logic?",
+      "createdAt": "2025-05-06T09:49:58.671Z"
+    },
+    {
+      "id": "question-fb009d5b-b580-4923-9370-90a2040418c8",
+      "text": "An insurance provider uses Integration Insight to monitor claim processing integrations but needs to enrich milestones with contextual data (e.g., customer tier, policy type) without altering integration logic. Which Integration Insight technique best enables this enrichment?",
+      "createdAt": "2025-05-06T09:50:00.370Z"
+    },
+    {
+      "id": "question-e847215c-fc4b-4c1a-94b0-c39894c29673",
+      "text": "A cloud service provider uses Integration Insight to monitor provisioning integrations and needs to proactively detect service degradations by identifying deviations in metrics (e.g., provisioning time, success rates) from historical patterns. Which Integration Insight capability, with OCI AI services, best enables predictive alerting via anomaly detection?",
+      "createdAt": "2025-05-06T09:50:02.180Z"
+    },
+    {
+      "id": "question-29983f52-302a-4281-bea3-7c8414aeedc7",
+      "text": "Rachel, an integration developer in Seattle, needs to configure an FTP adapter to process inventory files from a partner's SFTP server. Which authentication method provides secure file transfer without requiring custom coding?",
+      "createdAt": "2025-05-06T09:50:03.803Z"
+    },
+    {
+      "id": "question-76912815-7b87-4a6a-b8a8-f166e6c9ee7c",
+      "text": "Jason, an application architect in Boston, needs to configure a REST adapter connection to a third-party API that enforces 100 requests/minute limits. Which OIC feature prevents rate limit violations?",
+      "createdAt": "2025-05-06T09:50:05.489Z"
+    },
+    {
+      "id": "question-cdc70a96-1cde-4a81-bc50-d58494d8c8fa",
+      "text": "Emily, a data engineer in Austin, needs to retrieve only specific columns from a large customer table to improve integration performance. Which SQL technique should be used in the database adapter configuration?",
+      "createdAt": "2025-05-06T09:50:08.148Z"
+    },
+    {
+      "id": "question-675dd79b-454c-464c-ab92-e69d42d44f56",
+      "text": "Michael, an integration specialist in Denver, needs to connect OIC to an on-premises IBM MQ queue. Which connection method provides reliable messaging?",
+      "createdAt": "2025-05-06T09:50:09.854Z"
+    },
+    {
+      "id": "question-92dc1747-694b-406f-9313-e4afcfbfcfaa",
+      "text": "Jessica, a systems analyst in Atlanta, needs to process CSV files every hour from a partner's FTP server. Which trigger type provides the most reliable scheduling?",
+      "createdAt": "2025-05-06T09:50:11.555Z"
+    },
+    {
+      "id": "question-697f79b1-aad9-4537-ba59-e3f19bb65939",
+      "text": "David, a support engineer in Chicago, needs to handle temporary outages of a legacy SOAP service. Which OIC feature provides automatic recovery?",
+      "createdAt": "2025-05-06T09:50:13.210Z"
+    },
+    {
+      "id": "question-5030886d-835a-4a96-af3d-25f34ba6b431",
+      "text": "Sarah, an integration architect in Phoenix, needs to reduce bandwidth usage when transferring large product catalogs. Which adapter configuration helps?",
+      "createdAt": "2025-05-06T09:50:14.860Z"
+    }
+  ]
 }
