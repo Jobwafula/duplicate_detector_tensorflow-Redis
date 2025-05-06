@@ -8,6 +8,7 @@ const xlsx = require("xlsx");
 const { v4: uuidv4 } = require("uuid");
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 const Bottleneck = require("bottleneck");
+const { jsonrepair } = require("jsonrepair");
 
 const app = express();
 app.use(cors());
@@ -19,10 +20,11 @@ const SIMILARITY_THRESHOLD = 0.85;
 const PREFILTER_THRESHOLD = 0.6;
 const MAX_FILE_SIZE = 10 * 1024 * 1024;
 const UPLOADS_DIR = path.join(__dirname, "Uploads");
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY || "AIzaSyD4oOKpRUlFYKXQoas93Q3k5UvaIwlEt7Y";
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY || "AIzaSyAO33YpeMHGd49SZGmwnmS4pu3lRCpv7eE";
 const GEMINI_MODEL_NAME = "gemini-1.5-flash";
 const GEMINI_REQUESTS_PER_MINUTE = 15;
 const GEMINI_BATCH_SIZE = 5;
+const MAX_RETRIES = 3;
 
 // Initialize Gemini
 const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
@@ -35,6 +37,11 @@ const limiter = new Bottleneck({
   reservoirRefreshInterval: 60 * 1000,
   maxConcurrent: 2,
 });
+
+// Track API usage
+let apiCallCount = 0;
+let apiFailures = 0;
+let fallbackCount = 0;
 
 // Similarity cache
 const similarityCache = new Map();
@@ -64,28 +71,64 @@ const upload = multer({
   }
 });
 
-// Initialize JSON file
+// Initialize JSON file and test API key
 async function initialize() {
   try {
     await fs.access(QUESTIONS_FILE);
   } catch {
     await fs.writeFile(QUESTIONS_FILE, JSON.stringify({ questions: [] }));
   }
+
+  // Test API key
+  try {
+    const result = await model.generateContent("Test API connectivity");
+    console.log("Gemini API test successful:", await result.response.text());
+  } catch (e) {
+    console.error("Gemini API key validation failed:", e.message);
+  }
+
   console.log("System ready with Gemini integration!");
 }
 
-// Sanitize JSON string to fix common issues
+// Enhanced JSON sanitization
 function sanitizeJsonString(jsonString) {
-  // Remove extra commas before closing brackets or braces
-  jsonString = jsonString.replace(/,\s*([\]}])/g, '$1');
-  // Remove trailing commas in arrays/objects
-  jsonString = jsonString.replace(/,(\s*[\]}])/g, '$1');
-  // Escape unescaped quotes
-  jsonString = jsonString.replace(/(?<!\\)(\")/g, '\\$1');
-  return jsonString;
+  try {
+    // Remove Markdown code fences
+    jsonString = jsonString.replace(/```json\n|```/g, '');
+    // Remove extra commas before closing brackets/braces
+    jsonString = jsonString.replace(/,\s*([\]}])/g, '$1');
+    // Remove trailing commas
+    jsonString = jsonString.replace(/,(\s*[\]}])/g, '$1');
+    // Replace single quotes with double quotes for keys and values
+    jsonString = jsonString.replace(/(\w+|'[^']+')(?=\s*:)/g, (match) => `"${match.replace(/'/g, '')}"`);
+    jsonString = jsonString.replace(/:(\s*)'([^']+)'/g, ':$1"$2"');
+    // Escape unescaped quotes within strings
+    jsonString = jsonString.replace(/(?<!\\)(\")(?=.*\":)/g, '\\$1');
+    // Remove invalid characters
+    jsonString = jsonString.replace(/[\x00-\x1F\x7F-\x9F]/g, '');
+    // Fix missing closing braces/brackets
+    let openBraces = (jsonString.match(/{/g) || []).length;
+    let closeBraces = (jsonString.match(/}/g) || []).length;
+    while (openBraces > closeBraces) {
+      jsonString += '}';
+      closeBraces++;
+    }
+    let openBrackets = (jsonString.match(/\[/g) || []).length;
+    let closeBrackets = (jsonString.match(/]/g) || []).length;
+    while (openBrackets > closeBrackets) {
+      jsonString += ']';
+      closeBrackets++;
+    }
+    // Remove extra text before/after JSON
+    jsonString = jsonString.replace(/^[\s\S]*?({[\s\S]*?})[\s\S]*?$/, '$1');
+    return jsonString;
+  } catch (e) {
+    console.error("JSON sanitization failed:", e.message);
+    return jsonString;
+  }
 }
 
-// Enhanced similarity check using Gemini with fallback and retry
+// Enhanced similarity check with robust JSON handling
 async function checkSimilarity(question1, question2, retryCount = 0) {
   const cacheKey = `${question1}||${question2}`.toLowerCase();
   if (similarityCache.has(cacheKey)) {
@@ -111,73 +154,139 @@ async function checkSimilarity(question1, question2, retryCount = 0) {
 
   try {
     const result = await limiter.schedule(async () => {
-      const prompt = `Analyze the similarity between these two questions:
+      apiCallCount++;
+      console.log(`Gemini API call #${apiCallCount} for "${question1}" vs "${question2}"`);
       
+      const prompt = `Return only a raw JSON object (no Markdown, no code fences) analyzing the similarity between:
       Question 1: "${question1}"
       Question 2: "${question2}"
-
-      Respond with a JSON object containing:
-      - similarityScore (0-1)
-      - isSameQuestion (boolean)
-      - reasons (array of strings)
-      - analysis (string explaining your reasoning)
-
-      Example response:
+      Format:
       {
-        "similarityScore": 0.92,
-        "isSameQuestion": true,
-        "reasons": ["Both ask about the same concept", "Similar phrasing"],
-        "analysis": "These questions are essentially identical, just worded slightly differently."
-      }`;
+        "similarityScore": number,
+        "isSameQuestion": boolean,
+        "reasons": string[],
+        "analysis": string
+      }
+      Ensure all strings are properly escaped and the response is valid JSON.`;
 
       const result = await model.generateContent(prompt);
       const response = await result.response;
-      const text = response.text();
+      const text = response.text().trim();
+      console.log(`Gemini raw response: ${text}`);
       
       // Extract JSON
+      let jsonString = text;
       const jsonStart = text.indexOf('{');
       const jsonEnd = text.lastIndexOf('}') + 1;
-      if (jsonStart === -1 || jsonEnd === 0) {
-        throw new Error("No valid JSON found in Gemini response");
+      if (jsonStart !== -1 && jsonEnd !== 0) {
+        jsonString = text.slice(jsonStart, jsonEnd);
+      } else {
+        console.warn("No JSON delimiters found, attempting to parse entire response");
       }
-      let jsonString = text.slice(jsonStart, jsonEnd);
 
       // Sanitize JSON
       jsonString = sanitizeJsonString(jsonString);
+      console.log(`Sanitized JSON: ${jsonString}`);
 
       try {
+        // Attempt JSON repair
+        jsonString = jsonrepair(jsonString);
         const analysis = JSON.parse(jsonString);
         const result = {
-          similarityScore: analysis.similarityScore || 0,
-          isSameQuestion: analysis.isSameQuestion || false,
-          reasons: analysis.reasons || [],
-          analysis: analysis.analysis || "No detailed analysis provided"
+          similarityScore: analysis.similarityScore || quickSimilarity,
+          isSameQuestion: analysis.isSameQuestion || quickSimilarity > SIMILARITY_THRESHOLD,
+          reasons: analysis.reasons || ["Based on Gemini analysis"],
+          analysis: analysis.analysis || "Gemini analysis completed"
         };
         similarityCache.set(cacheKey, result);
         return result;
       } catch (e) {
         console.error(`Failed to parse Gemini response for questions: "${question1}" vs "${question2}"`);
         console.error("Raw response:", text);
-        console.error("Extracted JSON:", jsonString);
+        console.error("Sanitized JSON:", jsonString);
+        console.error("Parse error:", e.message, e.stack);
         throw new Error("Invalid JSON response from Gemini");
       }
     });
 
     return result;
   } catch (error) {
-    if (error.status === 429 && retryCount < 1) {
-      const delayMs = 10 * 1000;
-      console.warn(`Rate limit hit for "${question1}" vs "${question2}", retrying after ${delayMs / 1000}s...`);
+    apiFailures++;
+    console.error(`Gemini API error for "${question1}" vs "${question2}":`, {
+      message: error.message,
+      status: error.status,
+      stack: error.stack
+    });
+
+    if (error.status === 429 && retryCount < MAX_RETRIES) {
+      const delayMs = 10000 * Math.pow(2, retryCount);
+      console.warn(`Rate limit hit, retrying after ${delayMs / 1000}s (attempt ${retryCount + 1}/${MAX_RETRIES})...`);
       await new Promise(resolve => setTimeout(resolve, delayMs));
       return checkSimilarity(question1, question2, retryCount + 1);
     }
 
-    console.error("Gemini API error:", error);
+    // Retry with simplified prompt for JSON parsing errors
+    if (error.message.includes("Invalid JSON") && retryCount < MAX_RETRIES) {
+      console.warn(`Retrying with simplified prompt due to JSON error (attempt ${retryCount + 1}/${MAX_RETRIES})...`);
+      const simplifiedPrompt = `Return only a raw JSON object (no Markdown, no code fences):
+      {
+        "similarityScore": ${quickSimilarity.toFixed(2)},
+        "isSameQuestion": ${quickSimilarity > SIMILARITY_THRESHOLD},
+        "reasons": ["Based on initial similarity check"],
+        "analysis": "Simplified response due to previous JSON parsing failure"
+      }`;
+      try {
+        const result = await limiter.schedule(async () => {
+          apiCallCount++;
+          console.log(`Gemini API retry call #${apiCallCount} for simplified prompt`);
+          const result = await model.generateContent(simplifiedPrompt);
+          let text = (await result.response.text()).trim();
+          console.log(`Gemini retry response: ${text}`);
+          // Remove Markdown code fences
+          text = text.replace(/```json\n|```/g, '');
+          const jsonString = sanitizeJsonString(text);
+          console.log(`Sanitized retry JSON: ${jsonString}`);
+          const analysis = JSON.parse(jsonrepair(jsonString));
+          const resultData = {
+            similarityScore: analysis.similarityScore || quickSimilarity,
+            isSameQuestion: analysis.isSameQuestion || quickSimilarity > SIMILARITY_THRESHOLD,
+            reasons: analysis.reasons || ["Based on initial similarity check"],
+            analysis: analysis.analysis || "Simplified response due to previous JSON parsing failure"
+          };
+          similarityCache.set(cacheKey, resultData);
+          return resultData;
+        });
+        return result;
+      } catch (retryError) {
+        console.error("Retry with simplified prompt failed:", retryError.message, retryError.stack);
+      }
+    }
+
+    // Fallback to quick similarity for near-identical questions
+    if (quickSimilarity >= 0.95) {
+      console.warn("Using quick similarity due to repeated JSON parsing failures");
+      const result = {
+        similarityScore: quickSimilarity,
+        isSameQuestion: quickSimilarity > SIMILARITY_THRESHOLD,
+        reasons: ["High lexical similarity detected"],
+        analysis: "Gemini analysis failed: Repeated JSON parsing errors - used quick similarity"
+      };
+      similarityCache.set(cacheKey, result);
+      return result;
+    }
+
+    fallbackCount++;
+    console.warn("Falling back to string similarity");
+    const words1 = question1.toLowerCase().split(/\s+/).map(w => w.replace(/[^\w]/g, ''));
+    const words2 = question2.toLowerCase().split(/\s+/).map(w => w.replace(/[^\w]/g, ''));
+    const commonWords = words1.filter(w => w.includes(w) && w.length > 2);
     const result = {
       similarityScore: quickSimilarity,
       isSameQuestion: quickSimilarity > SIMILARITY_THRESHOLD,
-      reasons: ["Fallback to string similarity due to API error"],
-      analysis: "Gemini analysis failed - used basic string comparison"
+      reasons: commonWords.length > 0 
+        ? [{ type: "common_words", words: commonWords, count: commonWords.length }]
+        : ["Fallback to string similarity due to API error"],
+      analysis: `Gemini analysis failed: ${error.message} - used basic string comparison`
     };
     similarityCache.set(cacheKey, result);
     return result;
@@ -427,7 +536,10 @@ async function processExcelFile(filePath) {
         totalQuestions: results.length,
         duplicatesFound: results.filter(r => r.isDuplicate).length,
         uniqueQuestions: uniqueResults.length,
-        geminiUsage: similarityCache.size
+        geminiUsage: similarityCache.size,
+        apiCallCount,
+        apiFailures,
+        fallbackCount
       }
     };
   } catch (err) {
@@ -441,6 +553,9 @@ app.post("/reset-questions", async (req, res) => {
   try {
     await fs.writeFile(QUESTIONS_FILE, JSON.stringify({ questions: [] }, null, 2));
     similarityCache.clear();
+    apiCallCount = 0;
+    apiFailures = 0;
+    fallbackCount = 0;
     res.json({ 
       success: true,
       message: "Questions database has been reset successfully"
@@ -480,7 +595,10 @@ app.post("/check-batch", async (req, res) => {
         totalQuestions: questions.length,
         duplicatesFound: results.filter(r => r.isDuplicate).length,
         processingTime: `${(Date.now() - startTime) / 1000} seconds`,
-        geminiUsage: similarityCache.size
+        geminiUsage: similarityCache.size,
+        apiCallCount,
+        apiFailures,
+        fallbackCount
       }
     });
   } catch (error) {
@@ -551,14 +669,78 @@ app.get("/download/:filename", async (req, res) => {
   }
 });
 
+// Debug endpoint for testing question pairs
+app.post("/debug", async (req, res) => {
+  try {
+    const { question1, question2 } = req.body;
+    if (!question1 || !question2) {
+      return res.status(400).json({ error: "Two questions are required" });
+    }
+
+    const prompt = `Return only a raw JSON object (no Markdown, no code fences) analyzing the similarity between:
+    Question 1: "${question1}"
+    Question 2: "${question2}"
+    Format:
+    {
+      "similarityScore": number,
+      "isSameQuestion": boolean,
+      "reasons": string[],
+      "analysis": string
+    }
+    Ensure all strings are properly escaped and the response is valid JSON.`;
+
+    const result = await model.generateContent(prompt);
+    let text = (await result.response.text()).trim();
+    text = text.replace(/```json\n|```/g, '');
+    const jsonString = sanitizeJsonString(text);
+    const parsed = JSON.parse(jsonrepair(jsonString));
+
+    res.json({
+      success: true,
+      rawResponse: text,
+      sanitizedResponse: jsonString,
+      parsedResponse: parsed
+    });
+  } catch (error) {
+    console.error("Debug endpoint error:", error);
+    res.status(500).json({
+      success: false,
+      error: error.message,
+      rawResponse: error.response ? error.response.text : null
+    });
+  }
+});
+
+// Stats endpoint for monitoring
+app.get("/stats", (req, res) => {
+  res.json({
+    apiCallCount,
+    apiFailures,
+    fallbackCount,
+    cacheSize: similarityCache.size,
+    rateLimit: {
+      reservoir: limiter.reservoir,
+      maxConcurrent: limiter.maxConcurrent,
+      requestsPerMinute: GEMINI_REQUESTS_PER_MINUTE
+    },
+    uptime: process.uptime()
+  });
+});
+
 // Health check endpoint
 app.get("/health", (req, res) => {
   res.json({ 
     status: "healthy",
-    version: "2.0.2",
-    features: ["gemini-flash-integration", "semantic-analysis", "optimized-rate-limiting", "json-sanitization"],
+    version: "2.0.6",
+    features: ["gemini-flash-integration", "semantic-analysis", "optimized-rate-limiting", "json-sanitization", "enhanced-logging", "robust-json-parsing", "debug-endpoint", "json-repair"],
     uptime: process.uptime(),
-    geminiModel: GEMINI_MODEL_NAME
+    geminiModel: GEMINI_MODEL_NAME,
+    stats: {
+      apiCallCount,
+      apiFailures,
+      fallbackCount,
+      cacheSize: similarityCache.size
+    }
   });
 });
 
